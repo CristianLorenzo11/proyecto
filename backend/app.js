@@ -16,6 +16,5 @@ app.get('/',(req, res)=> {
 app.listen(port, ()=>{
     console.log("el server esta funcionando")
 }
-
 )
 const mysqlConnect = require('./database/bd')
