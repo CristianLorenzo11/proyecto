@@ -3,6 +3,7 @@ const router= express()
 
 const mysqlConnect = require('../database/bd'); // la conexion con la base de datos
 const mysqlConeccion = require('../database/bd');
+const bodyParser = require('body-parser');
 
 
 
@@ -10,6 +11,18 @@ const mysqlConeccion = require('../database/bd');
 router.get('/',(req, res)=> {
     res.send ("esta es la ruta de inicio  ")
 })
+
+/* router.get('/producto1',(req, res)=> {
+    mysqlConeccion.query( "select *from producto",(error,registro)=>{
+if(error){
+    console.log("el error es",error)
+}
+else{
+    res.json(registro)
+}
+ })
+}); */
+
 // listar los productos en formato json
 router.get('/producto',(req, res)=> {
     mysqlConeccion.query( 
@@ -35,8 +48,14 @@ else{
 } })});
 
 
-
-
+// end point para agregar productos a la base de datos
+router.post("/producto", bodyParser.json(), (req, res)=>{
+    const{nombre_producto, id_marca, id_presentacion,id_proveedor,id_tipo_producto, id_ubicacion,cantidad }= req.body
+    console.log("datos", req.body)
+    console.log(nombre_producto, id_marca, id_presentacion,id_proveedor,id_tipo_producto, id_ubicacion,cantidad)
+    res.send("se cargo correctamente")
+}
+)
 
 
 module.exports= router; //para exportar la ruta
