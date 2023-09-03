@@ -48,11 +48,11 @@ else{
 } })});
 
 
-// end point para agregar productos a la base de datos
+// end point para post productos a la base de datos
 router.post("/producto", bodyParser.json(), (req, res)=>{
     const{nombre_producto, id_marca, id_presentacion,id_proveedor,id_tipo_producto, id_ubicacion,cantidad }= req.body
     console.log("datos", req.body)
-    console.log(nombre_producto, id_marca, id_presentacion,id_proveedor,id_tipo_producto, id_ubicacion,cantidad)
+   
     res.send("se cargo correctamente")
 }
 )
