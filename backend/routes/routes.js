@@ -1,8 +1,8 @@
 const express = require('express')
 const router= express()
 
-const mysqlConnect = require('../database/bd'); // la conexion con la base de datos
-const mysqlConeccion = require('../database/bd');
+// la conexion con la base de datos
+const mysqlConexion = require('../database/bd');
 const bodyParser = require('body-parser');
 
 
@@ -25,7 +25,7 @@ else{
 
 // listar los productos en formato json
 router.get('/producto',(req, res)=> {
-    mysqlConeccion.query( 
+    mysqlConexion.query( 
         "select p.nombre_producto as nombre, p.cantidad, pr.nombre_proveedor as proveedor,m.nombre_marca as marca, u.ubicacion , tp.tipo_de_producto from producto p left join proveedor pr on p.id_proveedor = pr.idproveedor left join  marca m on p.id_marca= m.id_marca  left join ubicacion u on p.id_ubicacion= u.id_ubicacion left join tipo_producto tp on p.id_tipo_producto= tp.id_tipo_producto",(error,registro)=>{
 if(error){
     console.log("el error es",error)
@@ -36,10 +36,10 @@ else{
  })
 });
 
-//selecionar producto por id
+//endpoint para selecionar producto por id
 router.get("/producto/:id_producto",(req, res)=> {
     const {id_producto} = req.params
-    mysqlConeccion.query( "select* from producto WHERE id_producto = ? ",[id_producto],(error,registro)=>{
+    mysqlConexion.query( "select* from producto WHERE id_producto = ? ",[id_producto],(error,registro)=>{
 if(error){
     console.log("el error es",error)
 }
@@ -49,13 +49,28 @@ else{
 
 
 // end point para post productos a la base de datos
-router.post("/producto", bodyParser.json(), (req, res)=>{
+ /*router.post("/producto", bodyParser.json(), (req, res)=>{
     const{nombre_producto, id_marca, id_presentacion,id_proveedor,id_tipo_producto, id_ubicacion,cantidad }= req.body
     console.log("datos", req.body)
    
     res.send("se cargo correctamente")
 }
-)
+) */
+
+// endpoint para Insert de productos
+router.post("/producto", bodyParser.json(), (req, res)=>{
+    const{nombre_producto, id_marca, id_presentacion,id_proveedor,id_tipo_producto, id_ubicacion,cantidad }= req.body
+    mysqlConexion.query( "INSERT INTO producto (nombre_producto, id_marca, id_presentacion, id_proveedor, id_tipo_producto, id_ubicacion, cantidad) VALUES (?, ?, ?, ?, ?, ?, ?)",[nombre_producto, id_marca, id_presentacion,id_proveedor,id_tipo_producto, id_ubicacion,cantidad],(error,registro)=>{
+        if(error){
+            console.log("el error es",error)
+        }
+        else{
+            res.send("se cargo correctamente los datos")
+        } })
+}
+) 
+
+
 
 
 module.exports= router; //para exportar la ruta
