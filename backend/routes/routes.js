@@ -80,7 +80,7 @@ router.put("/producto/:id_producto", bodyParser.json(), (req, res)=>{
             console.log("el error es",error)
         }
         else{
-            res.send("la edicion se cargo correctamente en el registro ")
+            res.send("la edicion del registro  " +id_producto+ " se realizo correctamente ")
         } })
 }
 ) 
