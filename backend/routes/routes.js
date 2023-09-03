@@ -69,8 +69,21 @@ router.post("/producto", bodyParser.json(), (req, res)=>{
         } })
 }
 ) 
+//endpoint para editar productos 
 
-
+router.put("/producto/:id_producto", bodyParser.json(), (req, res)=>{
+    
+    const{nombre_producto, id_marca, id_presentacion,id_proveedor,id_tipo_producto, id_ubicacion,cantidad }= req.body
+    const {id_producto} = req.params
+    mysqlConexion.query( "UPDATE producto SET nombre_producto =?, id_marca =?, id_presentacion =?, id_proveedor =?, id_tipo_producto =?, id_ubicacion=?, cantidad =? WHERE id_producto =? ",[nombre_producto, id_marca, id_presentacion,id_proveedor,id_tipo_producto, id_ubicacion,cantidad, id_producto],(error,registro)=>{
+        if(error){
+            console.log("el error es",error)
+        }
+        else{
+            res.send("la edicion se cargo correctamente en el registro ")
+        } })
+}
+) 
 
 
 module.exports= router; //para exportar la ruta
