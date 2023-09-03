@@ -84,6 +84,21 @@ router.put("/producto/:id_producto", bodyParser.json(), (req, res)=>{
         } })
 }
 ) 
+// endpoint para eliminar un producto
+router.delete("/producto/:id_producto", bodyParser.json(), (req, res)=>{
+    
+    const {id_producto} = req.params
+    mysqlConexion.query( "DELETE FROM producto WHERE id_producto =? ",[id_producto],(error,registro)=>{
+        if(error){
+            console.log("el error es",error)
+        }
+        else{
+            res.send("el registro  " +id_producto+ " se elimino correctamente ")
+        } })
+}
+) 
+
+
 
 
 module.exports= router; //para exportar la ruta
