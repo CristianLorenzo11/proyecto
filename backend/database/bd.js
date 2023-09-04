@@ -16,4 +16,4 @@ mysqlConeccion.connect(function(err){ //funcion para saber si hay error o si con
     }
 })
 
-module.exports=mysqlConeccion; // para exportar la variable de conexion
+module.exports=mysqlConnect; // para exportar la variable de conexion
