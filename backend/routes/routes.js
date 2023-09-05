@@ -1,5 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+const bcrypt= require('bcrypt');
 const router= express()
 
 // la conexion con la base de datos
@@ -49,6 +51,68 @@ mysqlConexion.query('SELECT * FROM usuarios WHERE user=?', [user], (error, usuar
         })
     }
 } })
+
+
+//Login de usuarios
+
+router.post('/login', bodyParser.json(), (req, res)=>{
+    if(!user){
+        res.json({
+            status: false,
+            mensaje: "El usuario es un dato obligatorio para el login"
+        })
+    }
+    if(!pass){
+        res.json({
+            status: false,
+            mensaje: "La contraseña es un dato obligatorio"
+        })
+    }
+})
+
+mysqlConexion.query('SELECT * FROM usuarios WHERE user=?', [user], (error, usuario)=>{
+    if(error){
+        console.log("Error en la base de datos")
+    }else{
+        if(usuario.length>0){
+            const comparacion= bcrypt.compareSync(pass, usuario[0].pass)   
+            if(comparacion){
+                jwt.sign({usuario}, 'boton', (error, token)=>{
+
+                    res.json({
+                        status: true,
+                        datos: usuario,
+                        token: token
+                    }) 
+                })
+
+                
+             }else{
+                res.json({
+                    status:false,
+                    mensaje:"La contraseña es incorrecta" 
+                }) 
+             }
+        }else{
+            res.json({
+                status:false,
+                mensaje:"El usuario NO EXISTE" 
+            }) 
+        }
+    }
+})
+            
+
+
+
+
+
+
+
+
+
+
+
 
 
 
