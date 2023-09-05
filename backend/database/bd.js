@@ -1,13 +1,13 @@
 const mysql = require('mysql');
 
-const mysqlConeccion= mysql.createConnection({ // creamos la conexion a la base de datos
+const mysqlConexion= mysql.createConnection({ // creamos la conexion a la base de datos
     host:'localhost',
     user: 'root',
     password: 'root',
     database: 'productos_deportivos'
 });
 
-mysqlConeccion.connect(function(err){ //funcion para saber si hay error o si conecto correctamente
+mysqlConexion.connect(function(err){ //funcion para saber si hay error o si conecto correctamente
     if(err){
         console.log('Mi error de conexion es: ', err)
         return;
@@ -16,4 +16,4 @@ mysqlConeccion.connect(function(err){ //funcion para saber si hay error o si con
     }
 })
 
-module.exports=mysqlConnect; // para exportar la variable de conexion
+module.exports=mysqlConexion; // para exportar la variable de conexion
