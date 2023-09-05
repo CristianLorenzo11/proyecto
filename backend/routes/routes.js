@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser');
 const router= express()
 
 // la conexion con la base de datos
@@ -11,6 +12,45 @@ const bodyParser = require('body-parser');
 router.get('/',(req, res)=> {
     res.send ("esta es la ruta de inicio  ")
 })
+
+//Registro de usuarios
+router.post('/registro', bodyParser.json(), (req, res)=>{
+    const{nombre, apellido, dni, user, pass, correo}= req.body;
+})
+
+
+if(!dni){
+    res.json({
+        status: false,
+        mensaje: "El dni es un campo obligatorio"
+    })
+}
+
+mysqlConexion.query('SELECT * FROM usuarios WHERE user=?', [user], (error, usuarios)=>{
+    if(error){
+        console.log("Error en la base de datos")
+    }else{
+        if(usuarios.length>0){
+            // no puede grabar 
+            res.json({
+                status:false,
+                mensaje:"El nombre de usuario ya existe" 
+            })
+    }else{
+        mysqlConnect.query('INSERT INTO usuarios (nombre, apellido, dni, user, pass, correo,) VALUES (?,?,?,?,?,?,?)', [nombre, apellido, dni, user, pass, correo ], (error, registros)=>{
+            if(error){
+                console.log('Error en la base de datos al momento de insertar ----> ', error)
+            }else{
+                res.json({
+                    status:true,
+                    mensaje: "El registro se grabo correctamente"
+                })
+            }
+        })
+    }
+} })
+
+
 
 /* router.get('/producto1',(req, res)=> {
     mysqlConexion.query( "select *from producto",(error,registro)=>{
