@@ -230,8 +230,8 @@ else{
 
 // endpoint para Insert proveedores
 router.post("/proveedor", bodyParser.json(), (req, res)=>{
-    const{nombre_proveedor }= req.body
-    mysqlConexion.query( "INSERT INTO proveedor (nombre_proveedor) VALUES (?)",[nombre_proveedor],(error,registro)=>{
+    const{nombre_proveedor, estado }= req.body
+    mysqlConexion.query( "INSERT INTO proveedor (nombre_proveedor, estado) VALUES (?,?)",[nombre_proveedor,estado],(error,registro)=>{
         if(error){
             console.log("el error es",error)
         }
@@ -247,7 +247,7 @@ router.put("/proveedor/:idproveedor", bodyParser.json(), (req, res)=>{
     
     const{nombre_proveedor }= req.body
     const {idproveedor} = req.params
-    mysqlConexion.query( "UPDATE proveedor SET nombre_proveedor =? WHERE idproveedor =? ",[nombre_proveedor, idproveedor],(error,registro)=>{
+    mysqlConexion.query( "UPDATE proveedor SET  nombre_proveedor=? WHERE idproveedor =? ",[nombre_proveedor, idproveedor],(error,registro)=>{
         if(error){
             console.log("el error es",error)
         }
@@ -257,19 +257,31 @@ router.put("/proveedor/:idproveedor", bodyParser.json(), (req, res)=>{
     })
 
 
-// endpoint para eliminar un proveedor
+// endpoint para dar de baja  un proveedor
 router.delete("/proveedor/:idproveedor", bodyParser.json(), (req, res)=>{
-    
+
     const {idproveedor} = req.params
-    mysqlConexion.query( "DELETE FROM proveedor WHERE idproveedor =? ",[idproveedor],(error,registro)=>{
+    mysqlConexion.uery( "UPDATE proveedor SET  estado='B' WHERE idproveedor =? ",[ idproveedor],(error,registro)=>{
         if(error){
             console.log("el error es",error)
         }
         else{
-            res.send("el registro  " +idproveedor+ " se elimino correctamente ")
+            res.send("la edicion del registro  " +idproveedor+ " se realizo correctamente ")
         } })
-}
-) 
+    })
+//// para dar de alta a un proveedor 
+    router.delete("/altaproveedor/:idproveedor", bodyParser.json(), (req, res)=>{
+
+        const {idproveedor} = req.params
+        mysqlConexion.query( "UPDATE proveedor SET  estado='A' WHERE idproveedor =? ",[ idproveedor],(error,registro)=>{
+            if(error){
+                console.log("el error es",error)
+            }
+            else{
+                res.send("la edicion del registro  " +idproveedor+ " se realizo correctamente ")
+            } })
+        })
+    
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
