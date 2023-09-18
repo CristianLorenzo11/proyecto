@@ -12,7 +12,6 @@ router.get('/',(req, res)=> {
 
 
 
-
 /* router.get('/producto1',(req, res)=> {
     mysqlConexion.query( "select *from producto",(error,registro)=>{
 if(error){

@@ -77,12 +77,6 @@ if(!apellido){
 }
 ) 
 
-
-
-
-
-
-
 module.exports= router; //para exportar la ruta
 
 //INSERT INTO usuario (nombre, apellido, dni, user, pass, correo) VALUES (?, ?, ?, ?, ?, ?)

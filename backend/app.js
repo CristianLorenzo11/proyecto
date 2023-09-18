@@ -15,8 +15,8 @@ app.listen(port, ()=>{
 }
 )
 app.use(require('./routes/routes')); // con esto requirimos las rutas
-app.use(require('./routes/login-registro'));
-
+app.use(require('./routes/registro'));
+app.use(require('./routes/login'))
 
 app.use(bodyParser.json)
 
