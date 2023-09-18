@@ -1,116 +1,13 @@
 const express = require('express')
-const bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken');
-const bcrypt= require('bcrypt');
 const router= express()
 
 // la conexion con la base de datos
 const mysqlConexion = require('../database/bd');
 const bodyParser = require('body-parser');
 
-
-
-
 router.get('/',(req, res)=> {
     res.send ("esta es la ruta de inicio  ")
 })
-
-//Registro de usuarios
-router.post('/registro', bodyParser.json(), (req, res)=>{
-    const{nombre, apellido, dni, user, pass, correo}= req.body;
-})
-
-
-if(!dni){
-    res.json({
-        status: false,
-        mensaje: "El dni es un campo obligatorio"
-    })
-}
-
-mysqlConexion.query('SELECT * FROM usuarios WHERE user=?', [user], (error, usuarios)=>{
-    if(error){
-        console.log("Error en la base de datos")
-    }else{
-        if(usuarios.length>0){
-            // no puede grabar 
-            res.json({
-                status:false,
-                mensaje:"El nombre de usuario ya existe" 
-            })
-    }else{
-        mysqlConnect.query('INSERT INTO usuarios (nombre, apellido, dni, user, pass, correo,) VALUES (?,?,?,?,?,?,?)', [nombre, apellido, dni, user, pass, correo ], (error, registros)=>{
-            if(error){
-                console.log('Error en la base de datos al momento de insertar ----> ', error)
-            }else{
-                res.json({
-                    status:true,
-                    mensaje: "El registro se grabo correctamente"
-                })
-            }
-        })
-    }
-} })
-
-
-//Login de usuarios
-
-router.post('/login', bodyParser.json(), (req, res)=>{
-    if(!user){
-        res.json({
-            status: false,
-            mensaje: "El usuario es un dato obligatorio para el login"
-        })
-    }
-    if(!pass){
-        res.json({
-            status: false,
-            mensaje: "La contraseña es un dato obligatorio"
-        })
-    }
-})
-
-mysqlConexion.query('SELECT * FROM usuarios WHERE user=?', [user], (error, usuario)=>{
-    if(error){
-        console.log("Error en la base de datos")
-    }else{
-        if(usuario.length>0){
-            const comparacion= bcrypt.compareSync(pass, usuario[0].pass)   
-            if(comparacion){
-                jwt.sign({usuario}, 'boton', (error, token)=>{
-
-                    res.json({
-                        status: true,
-                        datos: usuario,
-                        token: token
-                    }) 
-                })
-
-                
-             }else{
-                res.json({
-                    status:false,
-                    mensaje:"La contraseña es incorrecta" 
-                }) 
-             }
-        }else{
-            res.json({
-                status:false,
-                mensaje:"El usuario NO EXISTE" 
-            }) 
-        }
-    }
-})
-            
-
-
-
-
-
-
-
-
-
 
 
 
@@ -261,7 +158,7 @@ router.put("/proveedor/:idproveedor", bodyParser.json(), (req, res)=>{
 router.delete("/proveedor/:idproveedor", bodyParser.json(), (req, res)=>{
 
     const {idproveedor} = req.params
-    mysqlConexion.uery( "UPDATE proveedor SET  estado='B' WHERE idproveedor =? ",[ idproveedor],(error,registro)=>{
+    mysqlConexion.queryuery( "UPDATE proveedor SET  estado='B' WHERE idproveedor =? ",[ idproveedor],(error,registro)=>{
         if(error){
             console.log("el error es",error)
         }
