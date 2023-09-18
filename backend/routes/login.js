@@ -33,7 +33,20 @@ mysqlConexion.query( "SELECT * FROM  usuario WHERE user=?",[user],(error,usuario
     else{
         if(usuario.length>0){
             const comparacion = bycript.compareSync(pass, usuario[0].pass)
-        res.send(comparacion)    
+        if(comparacion){
+            res.json({
+                status: true
+
+            })
+
+        }  
+        else{ res.json({
+            status: false,
+            mensaje: "la contraseña es incorrecta "
+
+        })
+
+        }
         
         } 
             
