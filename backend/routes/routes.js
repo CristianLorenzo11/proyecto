@@ -515,11 +515,6 @@ router.delete("/presentacion/:id_presentacion", verificarToken, bodyParser.json(
 
 
 
-
-
-
-
-
 function verificarToken(req, res, next){
     const bearer= req.headers['authorization'];
     if(typeof bearer!=='undefined'){
