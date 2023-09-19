@@ -1,12 +1,14 @@
 const express = require('express')
 const router= express()
 const bycript = require ('bcrypt')
+const jwt = require("jsonwebtoken")
 
 // la conexion con la base de datos
 const mysqlConexion = require('../database/bd');
 const bodyParser = require('body-parser');
 
 
+//aca comenzamos el endpoint para login 
 router.post("/login",bodyParser.json(), (req, res)=>{
     const{user,pass} =req.body
 if(!user){
@@ -34,9 +36,17 @@ mysqlConexion.query( "SELECT * FROM  usuario WHERE user=?",[user],(error,usuario
         if(usuario.length>0){
             const comparacion = bycript.compareSync(pass, usuario[0].pass)
         if(comparacion){
-            res.json({
-                status: true
+            jwt.sign({usuario},"bocajuniors", (error, token)=>{ //aca ponemos la palabra secreta del token 
 
+                res.json({
+                    status: true,
+                    datos: usuario,
+                    token: token
+    
+
+            }
+            )
+            
             })
 
         }  
