@@ -10,19 +10,12 @@ router.get('/',(req, res)=> {
     res.send ("esta es la ruta de inicio  ")
 })
 
+//rutas hechas de (producto)(proveedor)(marcas)(tipo de producto)(usuario)(presentacion)"ubicacion"
 
 
 
-/* router.get('/producto1',(req, res)=> {
-    mysqlConexion.query( "select *from producto",(error,registro)=>{
-if(error){
-    console.log("el error es",error)
-}
-else{
-    res.json(registro)
-}
- })
-}); */
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // listar los productos en formato json
 router.get('/producto', verificarToken , (req , res)=> {
@@ -62,6 +55,25 @@ router.get("/producto/:id_producto",verificarToken , (req , res)=> {
         }
    })
 });
+
+//endpoint para editar la presentacion 
+
+router.put("/presentacion/:id_presentacion",verificarToken, bodyParser.json(), (req, res)=>{
+    console.log("auth--------->",req.headers ["authorization"])
+    jwt.verify(req.token, "bocajuniors", (error, valido)=>{
+        if(error){
+            res.send("ups hubo un error en el token")}
+            else{
+    const{presentacion_del_producto}= req.body
+    const {id_presentacion} = req.params
+    mysqlConexion.query( "UPDATE presentacion SET presentacion_del_producto =? WHERE id_presentacion =? ",[presentacion_del_producto, id_presentacion],(error,registro)=>{
+        if(error){
+            console.log("el error es",error)
+        }
+        else{
+            res.send("la edicion del registro  " +id_presentacion+ " se realizo correctamente ")
+        } })}
+    })})
 
 
 // end point para post productos a la base de datos
@@ -428,7 +440,77 @@ router.delete("/tipo_producto/:id_tipo_producto",verificarToken, bodyParser.json
         } })}
 }
 ) })
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//PRESENTACION
+//endpoint para ver en que presentacion vienen los productos
+router.get('/presentacion',verificarToken , (req , res)=> {
+    console.log("auth--------->",req.headers ["authorization"])
+    jwt.verify(req.token, "bocajuniors", (error, valido)=>{
+    if(error){
+        res.send("ups hubo un error en el token")
+    } else{
+    mysqlConexion.query( "SELECT * FROM presentacion",(error,registro)=>{
+if(error){
+    console.log("el error es",error)
+}
+else{
+    res.json(registro)
+}
+ })}
+})}); 
+//endpoint para selecionar PRESENTACION por id
+router.get("/presentacion/:id_presentacion", verificarToken,(req, res)=> {
+    console.log("auth--------->",req.headers ["authorization"])
+    jwt.verify(req.token, "bocajuniors", (error, valido)=>{
+        if(error){
+            res.send("ups hubo un error en el token")}
+            else{
+    const {id_presentacion} = req.params
+    mysqlConexion.query( "select* from presentacion WHERE id_presentacion = ? ",[id_presentacion],(error,registro)=>{
+if(error){
+    console.log("el error es",error)
+}
+else{
+    res.json(registro)
+} })}
+})});
 
+// endpoint para Insert presentacion
+router.post("/presentacion", verificarToken, bodyParser.json(), (req, res)=>{
+    console.log("auth--------->",req.headers ["authorization"])
+    jwt.verify(req.token, "bocajuniors", (error, valido)=>{
+        if(error){
+            res.send("ups hubo un error en el token")}
+            else{
+    const{presentacion_del_producto }= req.body
+    mysqlConexion.query( "INSERT INTO presentacion (presentacion_del_producto) VALUES (?)",[presentacion_del_producto],(error,registro)=>{
+        if(error){
+            console.log("el error es",error)
+        }
+        else{
+            res.send("se cargo correctamente la presentacion del producto")
+        } })}
+}
+) })
+
+// endpoint para eliminar una presentacion
+router.delete("/presentacion/:id_presentacion", verificarToken, bodyParser.json(), (req, res)=>{
+    console.log("auth--------->",req.headers ["authorization"])
+    jwt.verify(req.token, "bocajuniors", (error, valido)=>{
+        if(error){
+            res.send("ups hubo un error en el token")}
+            else{
+    const {id_presentacion} = req.params
+    mysqlConexion.query( "DELETE FROM presentacion WHERE id_presentacion =? ",[id_presentacion],(error,registro)=>{
+        if(error){
+            console.log("el error es",error)
+        }
+        else{
+            res.send("el registro  " +id_presentacion+ " se elimino correctamente ")
+        } })}
+}
+) })
 
 
 
