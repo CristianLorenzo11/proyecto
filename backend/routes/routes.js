@@ -512,7 +512,24 @@ router.delete("/presentacion/:id_presentacion", verificarToken, bodyParser.json(
 }
 ) })
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//ubicacion
+//endpoint para ver la ubicacion de los productos
+router.get('/ubicacion',verificarToken , (req , res)=> {
+    console.log("auth--------->",req.headers ["authorization"])
+    jwt.verify(req.token, "bocajuniors", (error, valido)=>{
+    if(error){
+        res.send("ups hubo un error en el token")
+    } else{
+    mysqlConexion.query( "SELECT * FROM ubicacion",(error,registro)=>{
+if(error){
+    console.log("el error es",error)
+}
+else{
+    res.json(registro)
+}
+ })}
+})}); 
 
 
 function verificarToken(req, res, next){
