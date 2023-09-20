@@ -28,7 +28,7 @@ CREATE TABLE `marca` (
   `id_marca` int NOT NULL AUTO_INCREMENT,
   `nombre_marca` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_marca`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `marca` (
 
 LOCK TABLES `marca` WRITE;
 /*!40000 ALTER TABLE `marca` DISABLE KEYS */;
-INSERT INTO `marca` VALUES (1,'Sonnos'),(2,'MIR'),(3,'GFIT');
+INSERT INTO `marca` VALUES (1,'Sonnos'),(2,'topper'),(3,'penallty'),(5,'lux');
 /*!40000 ALTER TABLE `marca` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,7 +52,7 @@ CREATE TABLE `presentacion` (
   `id_presentacion` int NOT NULL AUTO_INCREMENT,
   `presentacion_del_producto` varchar(45) NOT NULL,
   PRIMARY KEY (`id_presentacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,7 +61,7 @@ CREATE TABLE `presentacion` (
 
 LOCK TABLES `presentacion` WRITE;
 /*!40000 ALTER TABLE `presentacion` DISABLE KEYS */;
-INSERT INTO `presentacion` VALUES (1,'Unidad'),(2,'Par');
+INSERT INTO `presentacion` VALUES (1,'Unidad'),(2,'Par'),(4,'docenas');
 /*!40000 ALTER TABLE `presentacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,12 +87,12 @@ CREATE TABLE `producto` (
   KEY `tipo_producto_idx` (`id_tipo_producto`),
   KEY `presentacion_producto_idx` (`id_presentacion`),
   KEY `ubicacion_producto_idx` (`id_ubicacion`),
-  CONSTRAINT `marca_producto` FOREIGN KEY (`id_marca`) REFERENCES `marca` (`id_marca`),
-  CONSTRAINT `presentacion_producto` FOREIGN KEY (`id_presentacion`) REFERENCES `presentacion` (`id_presentacion`),
-  CONSTRAINT `proveedor_producto` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`idproveedor`),
-  CONSTRAINT `tipo_producto` FOREIGN KEY (`id_tipo_producto`) REFERENCES `tipo_producto` (`id_tipo_producto`),
-  CONSTRAINT `ubicacion_producto` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicacion` (`id_ubicacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `producto-marca` FOREIGN KEY (`id_marca`) REFERENCES `marca` (`id_marca`),
+  CONSTRAINT `producto-presentacion` FOREIGN KEY (`id_presentacion`) REFERENCES `presentacion` (`id_presentacion`),
+  CONSTRAINT `producto-proveedor` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`idproveedor`),
+  CONSTRAINT `producto-tipodeproducto` FOREIGN KEY (`id_tipo_producto`) REFERENCES `tipo_producto` (`id_tipo_producto`),
+  CONSTRAINT `producto-ubicacion` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicacion` (`id_ubicacion`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +101,7 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (1,'mancuerna 5kg',1,2,1,3,1,10),(2,'colchoneta',3,1,3,2,2,15);
+INSERT INTO `producto` VALUES (1,'paleta de basquet',1,1,1,1,1,15),(3,'paleta de tennis',1,1,1,1,1,15);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,8 +115,9 @@ DROP TABLE IF EXISTS `proveedor`;
 CREATE TABLE `proveedor` (
   `idproveedor` int NOT NULL AUTO_INCREMENT,
   `nombre_proveedor` varchar(45) NOT NULL,
+  `estado` enum('A','B') NOT NULL,
   PRIMARY KEY (`idproveedor`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +126,7 @@ CREATE TABLE `proveedor` (
 
 LOCK TABLES `proveedor` WRITE;
 /*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
-INSERT INTO `proveedor` VALUES (1,'Sonnos'),(2,'MIR'),(3,'DeporAr');
+INSERT INTO `proveedor` VALUES (1,'horse','A'),(2,'five','A'),(3,'Penalty','A'),(6,'lux','A');
 /*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,7 +141,7 @@ CREATE TABLE `tipo_producto` (
   `id_tipo_producto` int NOT NULL AUTO_INCREMENT,
   `tipo_de_producto` varchar(45) NOT NULL,
   PRIMARY KEY (`id_tipo_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +150,7 @@ CREATE TABLE `tipo_producto` (
 
 LOCK TABLES `tipo_producto` WRITE;
 /*!40000 ALTER TABLE `tipo_producto` DISABLE KEYS */;
-INSERT INTO `tipo_producto` VALUES (1,'maquinas_de_gimnasio'),(2,'elementos_funcional'),(3,'accesorios');
+INSERT INTO `tipo_producto` VALUES (1,'elementos de coordinacion'),(2,'zapatillas de futbol'),(4,'ropa deportiva'),(5,'suplemento deportivo');
 /*!40000 ALTER TABLE `tipo_producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,7 +165,7 @@ CREATE TABLE `ubicacion` (
   `id_ubicacion` int NOT NULL AUTO_INCREMENT,
   `ubicacion` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_ubicacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,7 +174,7 @@ CREATE TABLE `ubicacion` (
 
 LOCK TABLES `ubicacion` WRITE;
 /*!40000 ALTER TABLE `ubicacion` DISABLE KEYS */;
-INSERT INTO `ubicacion` VALUES (1,'deposito1'),(2,'deposito2');
+INSERT INTO `ubicacion` VALUES (1,'deposito');
 /*!40000 ALTER TABLE `ubicacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -188,12 +189,12 @@ CREATE TABLE `usuario` (
   `id_usuario` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
-  `dni` int DEFAULT NULL,
+  `dni` int NOT NULL,
   `user` varchar(45) NOT NULL,
-  `pass` varchar(150) NOT NULL,
+  `pass` varchar(200) NOT NULL,
   `correo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -202,6 +203,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'CRISTIAN EMMANUEL','LORENZO',38138712,'CRISTIAN11','$2b$10$QrBJ/jX/KlYn7tveGtmynOFCfMujDfhunCMC7THlUoxs/oiwdF9ze','CRISTIAN@GMAIL.COM'),(2,'EMI','MALAQUIAS',38138712,'EMI11','$2b$10$8QQuSVTWCWiBBfxhU3HAJ.qm95Eiq2GsD0widYcpNgihaJ.WggVrK','EMI@GMAIL.COM'),(3,'EMI','MALAQUIAS',38138712,'EMI12','12345','EMI@GMAIL.COM'),(4,'EMI','MALAQUIAS',38138712,'EMI13','$2b$10$mGIRhZw5wZXGKf2g/BUsXO0aE2lZ3u214ZPRw4he3cYn3yzK3EZo2','EMI@GMAIL.COM'),(5,'ilan','kruk',38138712,'ilan1','$2b$10$dWLQdJLMVn8iKNgGMdZNV.WjqkEH6jOXvlwxHHCyfMXfxw1.Fnjqm','EMI@GMAIL.COM'),(6,'gonza','gales',38138712,'gonsi','$2b$10$baYWbu9USN5mQjMsCa00buIxihYgGPkgUe3IwA3TeLHsLJTfzK07m','EMI@GMAIL.COM');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -214,4 +216,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-29  0:21:16
+-- Dump completed on 2023-09-20  0:13:07
