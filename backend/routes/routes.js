@@ -10,7 +10,7 @@ router.get('/',(req, res)=> {
     res.send ("esta es la ruta de inicio  ")
 })
 
-//rutas hechas de (producto)(proveedor)(marcas)(tipo de producto)(usuario)(presentacion)"ubicacion"
+//rutas hechas de (producto)(proveedor)(marcas)(tipo de producto)(usuario)(presentacion)(ubicacion)
 
 
 
@@ -56,24 +56,6 @@ router.get("/producto/:id_producto",verificarToken , (req , res)=> {
    })
 });
 
-//endpoint para editar la presentacion 
-
-router.put("/presentacion/:id_presentacion",verificarToken, bodyParser.json(), (req, res)=>{
-    console.log("auth--------->",req.headers ["authorization"])
-    jwt.verify(req.token, "bocajuniors", (error, valido)=>{
-        if(error){
-            res.send("ups hubo un error en el token")}
-            else{
-    const{presentacion_del_producto}= req.body
-    const {id_presentacion} = req.params
-    mysqlConexion.query( "UPDATE presentacion SET presentacion_del_producto =? WHERE id_presentacion =? ",[presentacion_del_producto, id_presentacion],(error,registro)=>{
-        if(error){
-            console.log("el error es",error)
-        }
-        else{
-            res.send("la edicion del registro  " +id_presentacion+ " se realizo correctamente ")
-        } })}
-    })})
 
 
 // end point para post productos a la base de datos
@@ -511,6 +493,28 @@ router.delete("/presentacion/:id_presentacion", verificarToken, bodyParser.json(
         } })}
 }
 ) })
+
+//endpoint para editar la presentacion 
+
+router.put("/presentacion/:id_presentacion",verificarToken, bodyParser.json(), (req, res)=>{
+    console.log("auth--------->",req.headers ["authorization"])
+    jwt.verify(req.token, "bocajuniors", (error, valido)=>{
+        if(error){
+            res.send("ups hubo un error en el token")}
+            else{
+    const{presentacion_del_producto}= req.body
+    const {id_presentacion} = req.params
+    mysqlConexion.query( "UPDATE presentacion SET presentacion_del_producto =? WHERE id_presentacion =? ",[presentacion_del_producto, id_presentacion],(error,registro)=>{
+        if(error){
+            console.log("el error es",error)
+        }
+        else{
+            res.send("la edicion del registro  " +id_presentacion+ " se realizo correctamente ")
+        } })}
+    })})
+
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //ubicacion

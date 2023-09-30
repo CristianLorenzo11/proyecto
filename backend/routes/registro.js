@@ -44,10 +44,6 @@ if(!apellido){
 
     })
 }
-
-
-
-
  mysqlConexion.query( "SELECT * FROM  usuario WHERE user=?",[user],(error,usuario)=>{
        
         if(error){
@@ -68,7 +64,13 @@ if(!apellido){
                             console.log("ERROR EN EL REGISTRO ",error)
                         }
                         else{
-                            res.send("SE CARGO CORRECTAMENTE EL USUARIO")
+                            res.json({
+                                status: true,
+                                mensaje: "EL USUARIO "+ user +" SE CARGO CORRECTAMENTE "
+            
+                            }) 
+            
+                            
                         } })
                 } 
                 

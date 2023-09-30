@@ -1,0 +1,68 @@
+/* Estilo para el contenedor principal */
+
+.login-container {
+    background: linear-gradient(90deg, #00bcd4, #03a9f4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilo para el formulario */
+  form {
+    background-color: rgba(255, 255, 255, 0.945);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+  }
+  
+  /* Estilo para etiquetas y entradas de texto */
+  label {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para el botón */
+  button {
+    background-color: #03a9f4;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #039be5;
+  }
+  body {
+    background-color: black;
+  
+}
+.logo {
+  animation: girar 4s linear infinite; /* 4s es la duración de la animación y "infinite" la hace girar continuamente */
+}
+
+@keyframes girar {
+  0% {
+      transform: rotate(0deg); /* La rotación inicial es de 0 grados */
+  }
+  100% {
+      transform: rotate(360deg); /* La rotación final es de 360 grados, lo que completa una vuelta completa */
+  }
+}
+

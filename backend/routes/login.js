@@ -40,6 +40,7 @@ mysqlConexion.query( "SELECT * FROM  usuario WHERE user=?",[user],(error,usuario
 
                 res.json({
                     status: true,
+                    mensaje: "Ingreso Correctamente",
                     datos: usuario,
                     token: token
     
