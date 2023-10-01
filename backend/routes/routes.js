@@ -18,13 +18,9 @@ router.get('/',(req, res)=> {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // listar los productos en formato json
-router.get('/producto', verificarToken , (req , res)=> {
-    console.log("auth--------->",req.headers ["authorization"])
-    jwt.verify(req.token, "bocajuniors", (error, valido)=>{
-    if(error){
-        res.send("ups hubo un error en el token")
-    } else{
-        mysqlConexion.query("select p.id_producto, p.nombre_producto as nombre, p.cantidad, pr.nombre_proveedor as proveedor,m.nombre_marca as marca, u.ubicacion , tp.tipo_de_producto from producto p left join proveedor pr on p.id_proveedor = pr.idproveedor left join  marca m on p.id_marca= m.id_marca  left join ubicacion u on p.id_ubicacion= u.id_ubicacion left join tipo_producto tp on p.id_tipo_producto= tp.id_tipo_producto",(error,registro)=>{
+router.get('/producto',  (req , res)=> {
+  
+        mysqlConexion.query("select p.id_producto, p.nombre_producto as nombre, p.cantidad, pr.nombre_proveedor as proveedor,m.nombre_marca as marca, u.ubicacion , tp.tipo_de_producto, pre.presentacion_del_producto as presentacion from producto p left join proveedor pr on p.id_proveedor = pr.idproveedor left join  marca m on p.id_marca= m.id_marca  left join ubicacion u on p.id_ubicacion= u.id_ubicacion left join tipo_producto tp on p.id_tipo_producto= tp.id_tipo_producto left join presentacion pre on p.id_presentacion= pre.id_presentacion",(error,registro)=>{
             if(error){
                 console.log("el error es",error)
             }
@@ -33,9 +29,8 @@ router.get('/producto', verificarToken , (req , res)=> {
             }
              })
     }
-})
-
-});
+)
+;
 
 //endpoint para selecionar producto por id
 router.get("/producto/:id_producto",verificarToken , (req , res)=> {
@@ -130,12 +125,8 @@ router.delete("/producto/:id_producto",verificarToken, bodyParser.json(), (req, 
 
 //PROVEEDORES 
 //end point para ver los proveedores
-router.get('/proveedor',verificarToken,(req, res)=> {
-    console.log("auth--------->",req.headers ["authorization"])
-    jwt.verify(req.token, "bocajuniors", (error, valido)=>{
-        if(error){
-            res.send("ups hubo un error en el token")}
-            else{
+router.get('/proveedor',(req, res)=> {
+   
     mysqlConexion.query(  "select * FROM proveedor ",(error,registro)=>{
 if(error){
     console.log("el error es",error)
@@ -143,8 +134,8 @@ if(error){
 else{
     res.json(registro)
 }
- })}
-})});
+ })})
+// })});
 
 //endpoint para selecionar proveedor por id
 router.get("/proveedor/:idproveedor",verificarToken,(req, res)=> {
@@ -240,12 +231,7 @@ router.delete("/proveedor/:idproveedor",verificarToken, bodyParser.json(), (req,
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //MARCAS
 //end point para ver las marcas
-router.get('/marca',verificarToken,(req, res)=> {
-    console.log("auth--------->",req.headers ["authorization"])
-    jwt.verify(req.token, "bocajuniors", (error, valido)=>{
-        if(error){
-            res.send("ups hubo un error en el token")}
-            else{
+router.get('/marca',(req, res)=> {
 
     mysqlConexion.query(  "select * FROM marca ",(error,registro)=>{
 if(error){
@@ -255,7 +241,7 @@ else{
     res.json(registro)
 }
  })}
-})});
+);
 
 //endpoint para selecionar marca por id
 router.get("/marca/:id_marca", verificarToken,(req, res)=> {

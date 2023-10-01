@@ -29,3 +29,45 @@ export async function Registro(datos){
     const data= await respuesta.json()
     return data
 }
+//funcion de get para productos 
+
+export async function getProducto(){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/producto`, Options)
+    const data= await respuesta.json()
+    return data
+}
+
+
+/// get para proveedores 
+export async function getProveedor(){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/proveedor`, Options)
+    const data= await respuesta.json()
+    return data
+}
+
+/// get para Marcas 
+export async function getMarca(){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/marca`, Options)
+    const data= await respuesta.json()
+    return data
+}
+
+

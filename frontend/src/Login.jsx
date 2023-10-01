@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import reactLogo from './assets/react.svg'
 import { Link } from "react-router-dom";
-import './Login.css'
+
 import * as API from './servicios/servicios'
 
 export function Login(){
 const [user, setUsername]= useState('')
 const [pass, setPasword]= useState('')
 const [mensaje, setMensaje]= useState('')
+const [mitoken, setToken]= useState ('')
 
 const ingresar = async(event)=>{
   event.preventDefault();
   const usuario = await API.Login({user, pass})
   console.log(usuario);
 if(usuario.status){
+  setToken(usuario.token)
   alert(usuario.mensaje)
   window.location.href='/principal'
 }else{
@@ -28,6 +30,7 @@ if(usuario.status){
               <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
+       
                 <h1 className="h3 mb-3 fw-normal">Por favor Ingresar</h1>
                 {
                  mensaje? 

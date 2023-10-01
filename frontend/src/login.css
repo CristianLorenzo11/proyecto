@@ -47,10 +47,10 @@
   }
   
   button:hover {
-    background-color: #039be5;
+    background-color: #030a66;
   }
-  body {
-    background-color: black;
+  body  {
+    background-color: rgb(12, 231, 213) ;
   
 }
 .logo {
