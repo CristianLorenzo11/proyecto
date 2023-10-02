@@ -194,21 +194,21 @@ router.put("/proveedor/:idproveedor",verificarToken, bodyParser.json(), (req, re
 
 
 // endpoint para dar de baja  un proveedor
-router.delete("/proveedor/:idproveedor",verificarToken, bodyParser.json(), (req, res)=>{
-    console.log("auth--------->",req.headers ["authorization"])
-    jwt.verify(req.token, "bocajuniors", (error, valido)=>{
-        if(error){
-            res.send("ups hubo un error en el token")}
-            else{
+router.delete("/proveedor/:idproveedor", bodyParser.json(), (req, res)=>{
+    
     const {idproveedor} = req.params
     mysqlConexion.query( "UPDATE proveedor SET  estado='B' WHERE idproveedor =? ",[ idproveedor],(error,registro)=>{
         if(error){
             console.log("el error es",error)
         }
         else{
-            res.send("la baja del registro  " +idproveedor+ " se realizo correctamente ")
-        } })}
-    })})
+            res.json({
+                status: true,
+                mensaje: "la baja del registro  " +idproveedor+ " se realizo correctamente "
+
+       
+        }) }})}
+    )
 //// para dar de alta a un proveedor 
     router.delete("/altaproveedor/:idproveedor",verificarToken, bodyParser.json(), (req, res)=>{
         console.log("auth--------->",req.headers ["authorization"])

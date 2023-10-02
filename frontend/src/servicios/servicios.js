@@ -56,6 +56,19 @@ export async function getProveedor(){
     const data= await respuesta.json()
     return data
 }
+/// baja de proveedor 
+export async function deleteProveedor(idproveedor){
+    const Options={
+        method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/proveedor/${idproveedor}`, Options)
+    const data= await respuesta.json()
+    return data
+}
+
 
 /// get para Marcas 
 export async function getMarca(){

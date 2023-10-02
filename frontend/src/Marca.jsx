@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as API from './servicios/servicios'
 import reactLogo from './assets/react.svg'
+import Encabezado from "./Encabezado";
 
 
 
@@ -13,6 +14,7 @@ export function Marca(){
 
     return(
 <>
+<Encabezado/>
 <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
