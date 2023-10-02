@@ -84,3 +84,84 @@ export async function getMarca(){
 }
 
 
+// Inicio de fabricantes
+
+export async function getProveedor(){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+             Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/proveedor`, Options)
+    const data= await respuesta.json()
+
+    return data
+}
+
+export async function getProveedorByID(idproveedor){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/proveedor/${idproveedor}`, Options)
+    const data= await respuesta.json();
+    return data[0];
+}
+
+export async function deleteProveedor(idproveedor){
+    const Options={
+        method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/proveedor/${idproveedor}`, Options)
+    
+}
+
+export async function ActualizarEstadoProveedor(idproveedor, actulizar){
+    const Options={
+        method:'DELETE',
+        body: JSON.stringify(actulizar),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/proveedor/${idproveedor}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
+export async function AddProveedor(datos){
+    const Options={
+        method:'POST',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/proveedor`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
+
+export async function EditProveedor(datos, idproveedor){
+    const Options={
+        method:'PUT',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/proveedor/${idproveedor}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
+// fin de fabricantes
