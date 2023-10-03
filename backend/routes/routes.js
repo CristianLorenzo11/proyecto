@@ -276,8 +276,12 @@ router.post("/marca", verificarToken, bodyParser.json(), (req, res)=>{
             console.log("el error es",error)
         }
         else{
-            res.send("se cargo correctamente los datos de la marca")
-        } })}
+            res.json({
+                status: true,
+                mensaje: "La Marca  " +nombre_marca+ " se agrego correctamente "
+
+            
+        } )}})}
 }
 ) })
 
@@ -314,8 +318,12 @@ router.delete("/marca/:id_marca", verificarToken, bodyParser.json(), (req, res)=
             console.log("el error es",error)
         }
         else{
-            res.send("el registro  " +id_marca+ " se elimino correctamente ")
-        } })}
+            res.json({
+                status: true,
+                mensaje: "el registro  " +id_marca+ " se elimino correctamente "
+
+            
+        }) }})}
 }
 ) })
 

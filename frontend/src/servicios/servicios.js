@@ -114,3 +114,33 @@ export async function getMarca(){
     return data
 }
 
+/// eliminar una marca 
+export async function deleteMarca(id_marca){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/marca/${id_marca}`, Options)
+    const data= await respuesta.json()
+    return data
+}
+//agregar unA MARCA 
+//esta es mi funcion para AGREGAR UNA MARCA
+export async function AadMarca(datos){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'POST',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/marca`, Options)
+    const data= await respuesta.json()
+    return data
+}
