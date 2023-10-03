@@ -116,9 +116,12 @@ router.delete("/producto/:id_producto",verificarToken, bodyParser.json(), (req, 
         if(error){
             console.log("el error es",error)
         }
-        else{
-            res.send("el registro  " +id_producto+ " se elimino correctamente ")
-        } })}
+        else{ 
+            res.json({
+            status: true,
+            mensaje: "el registro  " +id_producto+ " se elimino correctamente "
+            
+        } )}})}
 }
 ) })
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -156,22 +159,21 @@ else{
 
 
 // endpoint para Insert proveedores
-router.post("/proveedor",verificarToken, bodyParser.json(), (req, res)=>{
-    console.log("auth--------->",req.headers ["authorization"])
-    jwt.verify(req.token, "bocajuniors", (error, valido)=>{
-        if(error){
-            res.send("ups hubo un error en el token")}
-            else{
-    const{nombre_proveedor, estado }= req.body
-    mysqlConexion.query( "INSERT INTO proveedor (nombre_proveedor, estado) VALUES (?,?)",[nombre_proveedor,estado],(error,registro)=>{
+router.post("/proveedor", bodyParser.json(), (req, res)=>{
+   
+    const{nombre_proveedor }= req.body
+    mysqlConexion.query( "INSERT INTO proveedor (nombre_proveedor) VALUES (?)",[nombre_proveedor],(error,registro)=>{
         if(error){
             console.log("el error es",error)
         }
         else{
-            res.send("se cargo correctamente los datos del proveedor")
-        } })}
-})
-}) 
+            res.json({
+                status: true,
+                mensaje: "El Proveedor "+ nombre_proveedor +" se cargo correctamente "
+  })
+ }})}
+)
+
 
 //endpoint para editar proveedores 
 

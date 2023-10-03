@@ -8,8 +8,10 @@ import { Principal } from './Principal'
 import { Home } from './Home'
 import { Registro } from './Registro'
 import { Producto } from './Producto'
-import { Proveedor } from './Proveedor'
+import { AadProveedor } from './AadProveedor'
 import { Marca } from './Marca'
+import { Proveedor } from './Proveedor'
+
 
 function App() {
   
@@ -25,6 +27,7 @@ function App() {
   <Route path= '/producto' element={<Producto/>} ></Route>
   <Route path='/proveedor' element={<Proveedor/>}></Route>
   <Route path='/marca' element={<Marca/>}></Route>
+  <Route path='/agregarproveedor' element={<AadProveedor/>}></Route>
 
 </Routes>
     </>)

@@ -83,3 +83,6 @@ button:focus-visible {
   display: flex;
   gap: 20px; /* Aumenta este valor para más separación entre los enlaces */
 }
+.editar{
+  background-color: purple
+}

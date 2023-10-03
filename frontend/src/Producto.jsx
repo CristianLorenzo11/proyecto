@@ -7,9 +7,16 @@ import Encabezado from "./Encabezado";
 
 export function Producto(){
     const[producto,setProducto]= useState([])
+    
     useEffect(()=>{
         API.getProducto().then(setProducto)}, []
         )
+        const eliminar = (e, id_producto)=>{
+            e.preventDefault();
+            console.log( "el id que vamos a eliminar es el ", id_producto);
+            API.deleteProducto(id_producto);
+            API.getProducto().then(setProducto);
+        }
 
    return(
 <> 
@@ -22,13 +29,13 @@ export function Producto(){
 <table>
     <tr>
        
-        <td className="h2">Productos</td>
-        <td className="h2">cantidad</td>
-        <td className="h2">proveedor</td>
-        <td className="h2">Marca</td>
-        <td className="h2">ubicacion</td>
-        <td className="h2">tipo de Producto</td>
-        <td className="h2">Presentacion</td>
+        <td className="h4">Productos</td>
+        <td className="h4">cantidad</td>
+        <td className="h4">proveedor</td>
+        <td className="h4">Marca</td>
+        <td className="h4">ubicacion</td>
+        <td className="h4">tipo de Producto</td>
+        <td className="h4">Presentacion</td>
     </tr>
     {producto.map((p)=>(
     <tr>
@@ -40,6 +47,7 @@ export function Producto(){
         <td>{p.ubicacion}</td>
         <td>{p.tipo_de_producto}</td>
         <td>{p.presentacion}</td>
+        <td><button  onClick={(e)=>eliminar(e, p.id_producto)}>Eliminar</button></td>
     </tr>
     ))}
     

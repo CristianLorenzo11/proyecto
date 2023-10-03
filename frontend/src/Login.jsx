@@ -8,18 +8,23 @@ export function Login(){
 const [user, setUsername]= useState('')
 const [pass, setPasword]= useState('')
 const [mensaje, setMensaje]= useState('')
-const [mitoken, setToken]= useState ('')
 
 const ingresar = async(event)=>{
   event.preventDefault();
   const usuario = await API.Login({user, pass})
   console.log(usuario);
 if(usuario.status){
-  setToken(usuario.token)
+  window.localStorage.setItem('usuario',JSON.stringify(usuario.datos[0]) )
+    window.localStorage.setItem('token', JSON.stringify(usuario.token));
   alert(usuario.mensaje)
   window.location.href='/principal'
 }else{
-  alert(usuario.mensaje)
+ 
+  setMensaje(usuario.mensaje)
+  setTimeout(()=>{
+      setMensaje('')
+      
+      }, 5000)
 }
 
 }
