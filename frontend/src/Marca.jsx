@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 
 
+
 export function Marca(){
     const[marca, setMarca]= useState([])
     useEffect(()=>{
@@ -27,17 +28,17 @@ export function Marca(){
         </a>
        
 <table>
-<Link to="/agregarmarca">+ Agregar Marca</Link>
+  <Link  to="/agregarmarca">+ Agregar Marca</Link>
     <tr>
        
-        <td className="h2">Marcas de los Productos</td>
+        <td className="h4">Marcas de los Productos</td>
         
-
     </tr>
     {marca.map((p)=>(
     <tr>
     <td>{p.nombre_marca}</td>
     <td><button  onClick={(e)=>eliminar(e, p.id_marca)}>eliminar</button></td>
+    <td><button className="editar" onClick={(e)=>eliminar(e, p.idproveedor)}>Editar</button></td>
     </tr>
     ))}
     

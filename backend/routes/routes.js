@@ -190,7 +190,11 @@ router.put("/proveedor/:idproveedor",verificarToken, bodyParser.json(), (req, re
             console.log("el error es",error)
         }
         else{
-            res.send("la edicion del registro  " +idproveedor+ " se realizo correctamente ")
+            res.json({
+                status: true,
+                mensaje: "la edicion del registro  " +idproveedor+ " se realizo correctamente "
+                         })
+            
         } })}
     })})
 
@@ -207,9 +211,8 @@ router.delete("/proveedor/:idproveedor", bodyParser.json(), (req, res)=>{
             res.json({
                 status: true,
                 mensaje: "la baja del registro  " +idproveedor+ " se realizo correctamente "
-
-       
-        }) }})}
+        })
+     }})}
     )
 //// para dar de alta a un proveedor 
     router.delete("/altaproveedor/:idproveedor",verificarToken, bodyParser.json(), (req, res)=>{
@@ -224,7 +227,10 @@ router.delete("/proveedor/:idproveedor", bodyParser.json(), (req, res)=>{
                 console.log("el error es",error)
             }
             else{
-                res.send("el alta del registro  " +idproveedor+ " se realizo correctamente ")
+                res.json({
+                    status: true,
+                    mensaje: "el alta del registro  " +idproveedor+ " se realizo correctamente "
+                                })
             } })}
         })})
     
@@ -279,9 +285,8 @@ router.post("/marca", verificarToken, bodyParser.json(), (req, res)=>{
             res.json({
                 status: true,
                 mensaje: "La Marca  " +nombre_marca+ " se agrego correctamente "
-
-            
-        } )}})}
+                    } )
+    }})}
 }
 ) })
 
@@ -300,7 +305,10 @@ router.put("/marca/:id_marca",verificarToken, bodyParser.json(), (req, res)=>{
             console.log("el error es",error)
         }
         else{
-            res.send("la edicion del registro  " +id_marca+ " se realizo correctamente ")
+            res.json({
+                status: true,
+                mensaje: "la edicion del registro  " +id_marca+ " se realizo correctamente "
+                    } )
         } })}
     })})
 

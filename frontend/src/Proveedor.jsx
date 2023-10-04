@@ -17,6 +17,12 @@ export function Proveedor(){
             API.deleteProveedor(idproveedor);
             API.getProveedor().then(setProveedor);
         }
+        const alta = (e, idproveedor)=>{
+            e.preventDefault();
+            console.log( "el id que vamos a dar de alta es el ", idproveedor);
+            API.altaProveedor(idproveedor);
+            API.getProveedor().then(setProveedor);
+        }
 
     return(
 <>
@@ -26,20 +32,27 @@ export function Proveedor(){
         </a>
         
 <table>
-<Link to="/agregarproveedor">+ Agregar Proveedor</Link>
+
     
     <tr>
        
         <td className="h4">Nombre del Proveedor</td>
         <td className="h4">Estado</td>
-
+<td><Link className="agregar" to="/agregarproveedor">+ Agregar Proveedor</Link></td>
     </tr>
     {proveedor.map((p)=>(
     <tr>
     <td>{p.nombre_proveedor}</td>
     <td>{p.estado}</td>
-    <td><button  onClick={(e)=>eliminar(e, p.idproveedor)}>Desactivar</button></td>
-    <td><button className="editar" onClick={(e)=>eliminar(e, p.idproveedor)}>Editar</button></td>
+    <td> <Link  to={`/editproveedor/${p.idproveedor}`}> <button className="editar">Editar </button></Link> </td>
+    {
+        (p.estado== "A")?
+        <td><button  onClick={(e)=>eliminar(e, p.idproveedor)}>Desactivar</button></td>
+        :
+        <td><button className="activar"  onClick={(e)=>alta(e, p.idproveedor)}>Activar</button></td>
+    }
+    
+    
     </tr>
     ))}
     

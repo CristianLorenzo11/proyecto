@@ -58,7 +58,6 @@ export async function deleteProducto(id_producto){
     return data
 }
 
-
 /// get para proveedores 
 export async function getProveedor(){
     const Options={
@@ -71,8 +70,24 @@ export async function getProveedor(){
     const data= await respuesta.json()
     return data
 }
+///////////////////////////////
+/// get para proveedores  POR ID
+export async function getProveedorID(idproveedor){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/proveedor/${idproveedor}`, Options)
+    const data= await respuesta.json()
+     return data[0];
+}
 /// baja de proveedor 
 export async function deleteProveedor(idproveedor){
+    
     const Options={
         method:'DELETE',
         headers: {
@@ -81,7 +96,23 @@ export async function deleteProveedor(idproveedor){
     }
     const respuesta = await fetch(`${URL}/proveedor/${idproveedor}`, Options)
     const data= await respuesta.json()
-    return data
+    
+     return data
+}
+/// alta de proveedor 
+export async function altaProveedor(idproveedor){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/altaproveedor/${idproveedor}`, Options)
+    const data= await respuesta.json()
+    
+     return data
 }
 //////////////
 //////////////
@@ -100,6 +131,22 @@ export async function AadProveedor(datos){
     return data
 }
 
+/// funcion para editar un proveedor
+export async function Editproveedor(datos, idproveedor){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'PUT',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/proveedor/${idproveedor}`, Options)
+    const data= await respuesta.json()
+    return data
+}
+
 
 /// get para Marcas 
 export async function getMarca(){
@@ -107,6 +154,7 @@ export async function getMarca(){
         method:'GET',
         headers: {
             'Content-Type': 'application/json',
+            
         }
     }
     const respuesta = await fetch(`${URL}/marca`, Options)

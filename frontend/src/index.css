@@ -86,3 +86,6 @@ button:focus-visible {
 .editar{
   background-color: purple
 }
+.activar{
+  background-color: green;
+}

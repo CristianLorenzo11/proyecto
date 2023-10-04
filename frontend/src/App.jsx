@@ -12,6 +12,7 @@ import { AadProveedor } from './AadProveedor'
 import { Marca } from './Marca'
 import { Proveedor } from './Proveedor'
 import { AadMarca } from './AadMarca'
+import { Editproveedor } from './EditProveedor'
 
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
   <Route path='/marca' element={<Marca/>}></Route>
   <Route path='/agregarproveedor' element={<AadProveedor/>}></Route>
   <Route path='/agregarmarca' element={<AadMarca/>}></Route>
+  <Route path='/editproveedor/:idproveedor' element={<Editproveedor/>}></Route>
+ 
 
 </Routes>
     </>)
