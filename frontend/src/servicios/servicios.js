@@ -192,3 +192,32 @@ export async function AadMarca(datos){
     const data= await respuesta.json()
     return data
 }
+/// get para MARCAS  POR ID
+export async function getMarcaID(id_marca){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/marca/${id_marca}`, Options)
+    const data= await respuesta.json()
+     return data[0];
+}
+/// funcion para editar un proveedor
+export async function Editmarca(datos, id_marca){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'PUT',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/marca/${id_marca}`, Options)
+    const data= await respuesta.json()
+    return data
+}

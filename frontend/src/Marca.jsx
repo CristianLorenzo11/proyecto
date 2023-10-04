@@ -28,17 +28,18 @@ export function Marca(){
         </a>
        
 <table>
-  <Link  to="/agregarmarca">+ Agregar Marca</Link>
+  
     <tr>
        
         <td className="h4">Marcas de los Productos</td>
-        
+        <td> <Link className="agregar"  to="/agregarmarca">+ Agregar Marca</Link></td>
     </tr>
     {marca.map((p)=>(
     <tr>
     <td>{p.nombre_marca}</td>
+    <td> <Link  to={`/editmarca/${p.id_marca}`}> <button className="editar">Editar </button></Link> </td>
     <td><button  onClick={(e)=>eliminar(e, p.id_marca)}>eliminar</button></td>
-    <td><button className="editar" onClick={(e)=>eliminar(e, p.idproveedor)}>Editar</button></td>
+    
     </tr>
     ))}
     
