@@ -221,3 +221,85 @@ export async function Editmarca(datos, id_marca){
     const data= await respuesta.json()
     return data
 }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+//////////////PRESENTACION
+
+/// get para presentacion
+export async function getPresentacion(){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/presentacion`, Options)
+    const data= await respuesta.json()
+    return data
+}
+
+/// eliminar una presentacion
+export async function deletePresentacion(id_presentacion){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/presentacion/${id_presentacion}`, Options)
+    const data= await respuesta.json()
+    return data
+}
+
+
+///////////////////////// agregar presentacion 
+//esta es mi funcion para AGREGAR UNA presentacion
+export async function AadPresentacion(datos){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'POST',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/presentacion`, Options)
+    const data= await respuesta.json()
+    return data
+}
+
+/// get para presentacion  POR ID
+export async function getPresentacionID(id_presentacion){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/presentacion/${id_presentacion}`, Options)
+    const data= await respuesta.json()
+     return data[0];
+}
+/// funcion para editar un presentacion
+export async function EditPresentacion(datos, id_presentacion){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'PUT',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/presentacion/${id_presentacion}`, Options)
+    const data= await respuesta.json()
+    return data
+}

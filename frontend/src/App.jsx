@@ -14,6 +14,9 @@ import { Proveedor } from './Proveedor'
 import { AadMarca } from './AadMarca'
 import { Editproveedor } from './EditProveedor'
 import { Editmarca } from './EditMarca'
+import { Presentacion } from './Presentacion'
+import { AadPresentacion } from './AadPresentacion'
+import { EditPresentacion } from './EditPresentacion'
 
 
 function App() {
@@ -34,6 +37,9 @@ function App() {
   <Route path='/agregarmarca' element={<AadMarca/>}></Route>
   <Route path='/editproveedor/:idproveedor' element={<Editproveedor/>}></Route>
   <Route path='/editmarca/:id_marca' element={<Editmarca/>}></Route>
+  <Route path='/presentacion' element={<Presentacion/>}></Route>
+  <Route path='/agregarpresentacion' element={<AadPresentacion/>}></Route>
+  <Route path='/editpresentacion/:id_presentacion' element={<EditPresentacion/>}></Route>
  
 
 </Routes>

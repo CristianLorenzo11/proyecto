@@ -170,7 +170,7 @@ router.post("/proveedor", bodyParser.json(), (req, res)=>{
             res.json({
                 status: true,
                 mensaje: "El Proveedor "+ nombre_proveedor +" se cargo correctamente "
-  })
+                     })
  }})}
 )
 
@@ -475,7 +475,10 @@ router.post("/presentacion", verificarToken, bodyParser.json(), (req, res)=>{
             console.log("el error es",error)
         }
         else{
-            res.send("se cargo correctamente la presentacion del producto")
+            res.json({
+                status: true,
+                mensaje: "se cargo correctamente la presentacion del producto"
+                     })
         } })}
 }
 ) })
@@ -513,8 +516,11 @@ router.put("/presentacion/:id_presentacion",verificarToken, bodyParser.json(), (
             console.log("el error es",error)
         }
         else{
-            res.send("la edicion del registro  " +id_presentacion+ " se realizo correctamente ")
-        } })}
+            res.json({
+                status: true,
+                mensaje: "la edicion del registro  " +id_presentacion+ " se realizo correctamente "
+                     })
+                  } })}
     })})
 
 
