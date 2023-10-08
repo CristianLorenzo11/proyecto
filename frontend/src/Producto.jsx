@@ -3,6 +3,7 @@ import './producto.css'
 import reactLogo from './assets/react.svg'
 import * as API from './servicios/servicios'
 import Encabezado from "./Encabezado";
+import { Link } from "react-router-dom";
 
 
 export function Producto(){
@@ -47,6 +48,7 @@ export function Producto(){
         <td>{p.ubicacion}</td>
         <td>{p.tipo_de_producto}</td>
         <td>{p.presentacion}</td>
+        <td> <Link  to={`/editproducto/${p.id_producto}`}> <button className="editar">Editar </button></Link> </td>
         <td><button  onClick={(e)=>eliminar(e, p.id_producto)}>Eliminar</button></td>
     </tr>
     ))}
