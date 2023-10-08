@@ -4,6 +4,7 @@ import reactLogo from './assets/react.svg';
 import Encabezado from "./Encabezado";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';  // **CAMBIO**: Importación de SweetAlert2
+import { Menu } from "./Menu";
 
 export function Presentacion(){
     const [presentacion, setPresentacion] = useState([]);
@@ -39,7 +40,7 @@ export function Presentacion(){
 
     return (
         <>
-            <Encabezado />
+            <Menu/>
             <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
                 <img src={reactLogo} className="logo react" alt="React logo" />
             </a>

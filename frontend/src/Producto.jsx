@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import './producto.css';
 import reactLogo from './assets/react.svg';
 import * as API from './servicios/servicios';
-import Encabezado from "./Encabezado";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
+import { Menu } from "./Menu";
 
 export function Producto() {
     const [producto, setProducto] = useState([]);
@@ -39,7 +39,7 @@ export function Producto() {
 
     return (
         <>
-            <Encabezado />
+            <Menu/>
             <p></p>
             <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
                 <img src={reactLogo} className="logo react" alt="React logo" />

@@ -3,6 +3,7 @@ import * as API from './servicios/servicios'
 import reactLogo from './assets/react.svg'
 import Encabezado from "./Encabezado";
 import { Link } from "react-router-dom";
+import { Menu } from "./Menu";
 
 
 export function Proveedor(){
@@ -26,7 +27,7 @@ export function Proveedor(){
 
     return(
 <>
-<Encabezado/>
+<Menu/>
 <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
