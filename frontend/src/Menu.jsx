@@ -17,6 +17,7 @@ return(
 <>
 <div className="encabezado">
       <div className="botones">
+      <Link to="/principal">Inicio</Link>
       <Link to="/producto">Productos</Link>
       <Link to="/proveedor">Proveedores</Link>
       <Link to="/marca">Marcas</Link>
