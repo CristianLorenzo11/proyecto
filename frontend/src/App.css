@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -41,26 +43,63 @@
   color: #888;
 }
 
-.agregar{
-  
-    margin: 2px;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: yellow;
-    cursor: pointer;
-    transition: border-color 0.25s;
-    border-color: #ffce64;
-    color: black;
-    
+.agregar {
+  margin: 2px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: yellow;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  border-color: #ffce64;
+  color: black;
+}
+
+.agregar:focus,
+.agregar:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.agregar:hover {
+  color: black;
+  border-color: #03d1d1;
+}
+
+/* Consultas de medios para responsividad */
+
+/* Aparatos pequeños (celulares) */
+@media only screen and (max-width: 600px) {
+  #root {
+    padding: 1rem;
   }
-  .agregar:focus,
-  .agregar:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+
+  .logo {
+    height: 4em;
+    padding: 1em;
   }
-  .agregar:hover {
-    color: black;
-    border-color: #03d1d1;}
+
+  .agregar {
+    padding: 0.4em 0.8em;
+    font-size: 0.9em;
+  }
+}
+
+/* Aparatos medianos (tablets) */
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  #root {
+    padding: 1.5rem;
+  }
+
+  .logo {
+    height: 5em;
+    padding: 1.2em;
+  }
+
+  .agregar {
+    padding: 0.5em 1em;
+    font-size: 0.95em;
+  }
+}

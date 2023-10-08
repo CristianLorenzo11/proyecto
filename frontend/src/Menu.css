@@ -1,53 +1,60 @@
 ul {
-list-style-type:none;
-
+  list-style-type: none;
 }
-h1{
-    color: rgb(1, 0, 10);
+
+h1 {
+  color: rgb(1, 0, 10);
 }
 
 .logo {
-  animation: girar 4s linear infinite; /* 4s es la duración de la animación y "infinite" la hace girar continuamente */;
+  animation: girar 4s linear infinite;
 }
 
 @keyframes girar {
   0% {
-      transform: rotate(0deg); /* La rotación inicial es de 0 grados */
+    transform: rotate(0deg);
   }
   100% {
-      transform: rotate(360deg); /* La rotación final es de 360 grados, lo que completa una vuelta completa */
+    transform: rotate(360deg);
   }
 }
-.login-container {
-    background: linear-gradient(90deg, #00bcd4, #03a9f4);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-  }
- /* Estilo para el formulario */
- form {
-    background-color: rgba(247, 247, 247, 0.863);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.952);
-    width: 300px;
-  }
 
-   /* Estilo para etiquetas y entradas de texto */
-   label {
-    font-weight: bold;
-    margin-bottom: 8px;
+.login-container {
+  background: linear-gradient(90deg, #00bcd4, #03a9f4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+form {
+  background-color: rgba(247, 247, 247, 0.863);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.952);
+  width: 300px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.973);
+}
+
+/* Media queries para la responsividad */
+@media screen and (max-width: 480px) {
+  form {
+    width: 90%; /* Hacer que el formulario tome el 90% del ancho en móviles */
   }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 4px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.973);
-  }
+}

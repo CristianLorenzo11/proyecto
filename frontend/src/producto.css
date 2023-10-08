@@ -1,35 +1,45 @@
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-  }
-  th, td {
-    padding: 12px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-collapse: collapse;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-.h4{
-    background-color: #f2f2f2;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  overflow-x: auto; /* Añadimos desbordamiento horizontal */
+  display: block; /* Convertimos la tabla en un bloque */
 }
 
-  tr{
-    background-color: #f2f2f2;
+th, td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.h4 {
+  background-color: #f2f2f2;
+}
+
+tr {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: aqua;
+}
+
+td {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  border: 1px solid #ccc;
+}
+
+/* Media queries para la responsividad */
+@media screen and (max-width: 768px) {
+  /* En dispositivos móviles, hacemos que la tabla sea más pequeña para que se pueda desplazar horizontalmente */
+  table {
+      width: 100%; 
+      overflow-x: scroll; 
   }
-  
-  tr:hover {
-    background-color: aqua;
-  }
-  
-  td {
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra */
-    border: 1px solid #ccc; /* Borde */
-  }
-  
-  
-  
+}

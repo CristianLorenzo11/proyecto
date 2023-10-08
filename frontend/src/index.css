@@ -2,11 +2,9 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -74,31 +72,53 @@ button:focus-visible {
   position: absolute;
   top: 0;
   left: 0;
-  align-items: center; /* Centra verticalmente el contenido */
-  padding: 10px; /* Espaciado opcional */
- 
-  color: #fff; /* Color del texto */
+  align-items: center;
+  padding: 10px;
+  color: #fff;
 }
+
 .botones {
   display: flex;
-  gap: 20px; /* Aumenta este valor para más separación entre los enlaces */
+  gap: 20px;
 }
-.editar{
-  background-color: purple
+
+.editar {
+  background-color: purple;
 }
-.activar{
+
+.activar {
   background-color: green;
 }
 
-.usuario{
+.usuario {
   color: blue;
   position: absolute;
   top: 0;
   right: 0;
-  right: 0;
-  background-color: #1877F2; /* Color de fondo similar al de Facebook */
-  color: white; /* Color del texto en blanco */
-  font-weight: bold; /* Fuente en negrita */
-  padding: 8px 16px; /* Espaciado interno */
-  border-radius: 4px; /* Bordes redondeados */
+  background-color: #1877F2;
+  color: white;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+/* Media queries para la responsividad */
+@media screen and (max-width: 768px) {
+  .botones {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .encabezado {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 2em;
+  }
+  button {
+    font-size: 0.8em;
+    padding: 0.4em 0.8em;
+  }
 }
