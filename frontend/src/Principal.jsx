@@ -14,8 +14,9 @@ export function Principal(){
       </div>
     
      
-      
-<h1> Pantalla Principal</h1>
+
+<h1> Outlet Zona Deportiva</h1>
+<h3>Deposito</h3>
 
 <Menu/>
 </>
