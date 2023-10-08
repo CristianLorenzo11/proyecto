@@ -348,3 +348,31 @@ export async function EditPresentacion(datos, id_presentacion){
     const data= await respuesta.json()
     return data
 }
+/// get para ubicacion
+export async function getUbicacion(){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/ubicacion`, Options)
+    const data= await respuesta.json()
+    return data
+}
+/// get para tipode productos
+export async function getTipoProductos(){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/tipo_producto`, Options)
+    const data= await respuesta.json()
+    return data
+}

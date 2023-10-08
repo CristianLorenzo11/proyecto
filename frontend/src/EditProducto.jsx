@@ -19,12 +19,16 @@ const[marcas, setMarcas]=useState([])
 const[presentaciones, setpresentaciones]=useState([])
 const[proveedores, setproveedores]=useState([])
 const[mensaje, setMensaje]= useState ('')
+const[tipo_productos, setTipoProductos]=useState([])
+const[ubicaciones, setUbicaciones]= useState([])
 
 useEffect(()=>{
         traerdatos();
         API.getMarca().then(setMarcas)
         API.getPresentacion().then(setpresentaciones)
         API.getProveedor().then(setproveedores)
+        API.getTipoProductos().then(setTipoProductos)
+        API.getUbicacion().then(setUbicaciones)
      },[])
         
 
@@ -80,6 +84,16 @@ useEffect(()=>{
                   <label for="floatingInput"> Nombre del producto</label>
                 </div>
                 <div className="form-floating">
+                  <input 
+                  type="text" 
+                  value={cantidad}
+                  onChange={(event)=>setCantidad(event.target.value)}
+                  className="form-control" 
+                  placeholder="cantidad"
+                  />
+                  <label for="floatingInput"> Cantidad</label>
+                </div>
+                <div className="form-floating">
                 <select onChange={(event)=>setMarca(event.target.value)} className="form-control">
                     {marcas.map((m)=>(
                       
@@ -107,37 +121,26 @@ useEffect(()=>{
                   <label for="floatingInput"> id Proveedor</label>
                 </div>
                 <div className="form-floating">
-                  <input 
-                  type="text" 
-                  value={id_tipo_producto}
-                  onChange={(event)=>setTipoProducto(event.target.value)}
-                  className="form-control" 
-                  placeholder="id tipo producto"
-                  />
-                  <label for="floatingInput"> id tipo Producto</label>
+                <select onChange={(event)=>setTipoProducto(event.target.value)} className="form-control">
+                    {tipo_productos.map((p)=>(
+                      
+                    <option selected={(p.id_tipo_producto==id_tipo_producto)?`selected`:``} value={p.id_tipo_producto}>{p.tipo_de_producto}</option>
+                    ))}
+                 </select>
+                  <label for="floatingInput"> tipo Producto</label>
                 </div>
 
                 <div className="form-floating">
-                  <input 
-                  type="text" 
-                  value={id_ubicacion}
-                  onChange={(event)=>setUbicacion(event.target.value)}
-                  className="form-control" 
-                  placeholder="id ubicacion"
-                  />
-                  <label for="floatingInput"> id ubicacion</label>
+                <select onChange={(event)=>setUbicacion(event.target.value)} className="form-control">
+                    {ubicaciones.map((p)=>(
+                      
+                    <option selected={(p.id_ubicacion==id_ubicacion)?`selected`:``} value={p.id_ubicacion}>{p.ubicacion}</option>
+                    ))}
+                 </select>
+                  <label for="floatingInput">ubicacion</label>
                 </div>
 
-                <div className="form-floating">
-                  <input 
-                  type="text" 
-                  value={cantidad}
-                  onChange={(event)=>setCantidad(event.target.value)}
-                  className="form-control" 
-                  placeholder="cantidad"
-                  />
-                  <label for="floatingInput"> Cantidad</label>
-                </div>
+               
 
 
 
