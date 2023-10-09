@@ -18,6 +18,8 @@ import { Presentacion } from './Presentacion'
 import { AadPresentacion } from './AadPresentacion'
 import { EditPresentacion } from './EditPresentacion'
 import { Editproducto } from './EditProducto'
+import { AadProducto } from './AadProducto'
+
 
 
 
@@ -43,6 +45,7 @@ function App() {
   <Route path='/agregarpresentacion' element={<AadPresentacion/>}></Route>
   <Route path='/editpresentacion/:id_presentacion' element={<EditPresentacion/>}></Route>
   <Route path='/editproducto/:id_producto' element={<Editproducto/>}></Route>
+  <Route path='/agregarproducto' element={<AadProducto/>}></Route>
  
 
 </Routes>

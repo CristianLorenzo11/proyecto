@@ -75,7 +75,11 @@ router.post("/producto",  verificarToken , bodyParser.json(), (req , res)=> {
                     console.log("el error es",error)
                 }
                 else{
-                    res.send("se cargo correctamente los datos")
+                    res.json({
+                        status: true ,
+                        mensaje: "se cargo correctamente los datos" 
+                             } )
+                    
                 } })
         }
         }

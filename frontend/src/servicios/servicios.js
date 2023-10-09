@@ -88,6 +88,21 @@ export async function EditProducto(datos, id_producto){
     return data
    
 }
+//esta es mi funcion para AGREGAR UN producto
+export async function AadProducto(datos){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'POST',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/producto`, Options)
+    const data= await respuesta.json()
+    return data
+}
 
 
 

@@ -48,13 +48,14 @@ export function Producto() {
             <table>
                 <tbody>
                     <tr>
-                        <td className="h4">Productos</td>
-                        <td className="h4">cantidad</td>
-                        <td className="h4">proveedor</td>
-                        <td className="h4">Marca</td>
-                        <td className="h4">ubicacion</td>
-                        <td className="h4">tipo de Producto</td>
-                        <td className="h4">Presentacion</td>
+                        <td className="h6">Productos</td>
+                        <td className="h6">cantidad</td>
+                        <td className="h6">proveedor</td>
+                        <td className="h6">Marca</td>
+                        <td className="h6">ubicacion</td>
+                        <td className="h6">tipo de Producto</td>
+                        <td className="h6">Presentacion</td>
+                        <td > <Link className="agregar" to="/agregarproducto">+ Agregar Producto</Link></td>
                     </tr>
                     {producto.map((p) => (
                         <tr key={p.id_producto}>
