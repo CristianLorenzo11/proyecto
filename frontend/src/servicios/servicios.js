@@ -1,5 +1,40 @@
 const URL ='http://localhost:3000';
 
+
+// Función para obtener la pregunta de seguridad del usuario
+export async function getPregunta(username) {
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options = {
+        method: 'POST',
+        body: JSON.stringify({username}),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    const fetchResponse = await fetch(`${URL}/getPregunta`, Options);
+    const data = await fetchResponse.json();
+    return data;
+}
+
+// Función para cambiar la contraseña
+export async function cambiarContrasena(username, respuestaUsuario, newPassword) {
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options = {
+        method: 'POST',
+        body: JSON.stringify({username, respuesta: respuestaUsuario, newPassword}),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    const fetchResponse = await fetch(`${URL}/cambiarContrasena`, Options);
+    const data = await fetchResponse.json();
+    return data;
+}
+
+
+
 //esta es mi funcion para loguearme
 export async function Login(datos){
     

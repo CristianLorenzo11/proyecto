@@ -1,41 +1,37 @@
-const express = require('express')
-const app= express()
-const port= 3000
+const express = require('express');
+const app = express();
+const port = 3000;
 
-const morgan = require ('morgan')
-const bodyParser = require ('body-parser')
-app.set('puerto' , 3000);
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+app.set('puerto', 3000);
 
-app.use(morgan('dev'))
+app.use(morgan('dev'));
+app.use(bodyParser.json()); // Corregido: se añade la función para interpretar JSON
+
+// Configuración para CORS
 app.use(function (req, res, next) {
-
-    // Website you wish to allow to connect
+    // Sitio web al que se le desea permitir la conexión
     res.setHeader('Access-Control-Allow-Origin', '*');
-
-    // Request methods you wish to allow
+    
+    // Métodos de solicitud que se desean permitir
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-
-    // Request headers you wish to allow
+    
+    // Encabezados de solicitud que se desean permitir
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
+    
+    // Establecer a verdadero si necesita que el sitio web incluya cookies en las solicitudes enviadas
+    // a la API (por ejemplo, en caso de que use sesiones)
     res.setHeader('Access-Control-Allow-Credentials', true);
-
-    // Pass to next layer of middleware
+    
+    // Pasar a la siguiente capa de middleware
     next();
 });
 
+app.listen(port, () => {
+    console.log("El servidor está funcionando"); // Aviso de que el servidor está funcionando correctamente
+});
 
-
-app.listen(port, ()=>{
-    console.log("el server esta funcionando") //avisamos que el servidor esta funcionando bien 
-}
-)
-app.use(require('./routes/routes')); // con esto requirimos las rutas
+app.use(require('./routes/routes')); // Se importan las rutas
 app.use(require('./routes/registro'));
-app.use(require('./routes/login'))
-
-app.use(bodyParser.json)
-
-
+app.use(require('./routes/login'));

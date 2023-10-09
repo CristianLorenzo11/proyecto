@@ -1,19 +1,96 @@
-const express = require('express')
-const router= express()
-const jwt= require("jsonwebtoken")
-
-// la conexion con la base de datos
+// routes.js
+const express = require('express');
+const router = express();
+const jwt = require("jsonwebtoken");
 const mysqlConexion = require('../database/bd');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt'); // Importar bcrypt
 
-router.get('/',(req, res)=> {
-    res.send ("esta es la ruta de inicio  ")
-})
+router.get('/', (req, res) => {
+    res.send("Esta es la ruta de inicio");
+});
 
-//rutas hechas de (producto)(proveedor)(marcas)(tipo de producto)(usuario)(presentacion)(ubicacion)
+// Pregunta de seguridad
+router.post("/getPregunta", (req, res) => {
+    const username = req.body.username;
 
+    // 1. Buscar la pregunta de seguridad en la base de datos según el usuario
+    mysqlConexion.query("SELECT securityQuestion FROM usuario WHERE user=?", [username], (error, result) => {
+        if (error) {
+            console.error("Error al obtener la pregunta de seguridad:", error);
+            res.status(500).json({
+                status: false,
+                mensaje: "Error al obtener la pregunta de seguridad",
+            });
+        } else if (result.length > 0) {
+            // Se encontró la pregunta de seguridad
+            const preguntaSeguridad = result[0].securityQuestion;
+            res.json({
+                status: true,
+                pregunta: preguntaSeguridad,
+            });
+        } else {
+            // No se encontró el usuario
+            res.status(404).json({
+                status: false,
+                mensaje: "Usuario no encontrado",
+            });
+        }
+    });
+});
 
+// Cambiar contraseña
+router.post("/cambiarContrasena", (req, res) => {
+    const { username, respuesta, newPassword } = req.body;
 
+    // 1. Verificar que la respuesta coincida con la almacenada en la base de datos
+    mysqlConexion.query("SELECT securityAnswer FROM usuario WHERE user=?", [username], (error, result) => {
+        if (error) {
+            console.error("Error al obtener la respuesta de seguridad:", error);
+            res.status(500).json({
+                status: false,
+                mensaje: "Error al verificar la respuesta de seguridad",
+            });
+        } else if (result.length > 0) {
+            const respuestaSeguridadAlmacenada = result[0].securityAnswer;
+
+            // Comparar la respuesta ingresada con la almacenada
+            if (respuesta === respuestaSeguridadAlmacenada) {
+                // 2. Si es correcta, actualizar la contraseña
+                const hash = bcrypt.hashSync(newPassword, 10);
+                mysqlConexion.query("UPDATE usuario SET pass=? WHERE user=?", [hash, username], (error, updateResult) => {
+                    if (error) {
+                        console.error("Error al cambiar la contraseña:", error);
+                        res.status(500).json({
+                            status: false,
+                            mensaje: "Error al cambiar la contraseña",
+                        });
+                    } else {
+                        // Contraseña cambiada exitosamente
+                        res.json({
+                            status: true,
+                            mensaje: "Contraseña cambiada exitosamente",
+                        });
+                    }
+                });
+            } else {
+                // 3. Respuesta incorrecta
+                res.status(401).json({
+                    status: false,
+                    mensaje: "La respuesta a la pregunta secreta es incorrecta",
+                });
+            }
+        } else {
+            // No se encontró el usuario
+            res.status(404).json({
+                status: false,
+                mensaje: "Usuario no encontrado",
+            });
+        }
+    });
+});
+
+module.exports = router;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

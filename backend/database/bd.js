@@ -3,7 +3,7 @@ const mysql = require('mysql');
 const mysqlConexion= mysql.createConnection({ // creamos la conexion a la base de datos
     host:'localhost',
     user: 'root',
-    password: 'root',
+    password: '',
     database: 'productos_deportivos'
 });
 
