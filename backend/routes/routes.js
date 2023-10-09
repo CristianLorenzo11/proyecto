@@ -77,7 +77,7 @@ router.post("/producto",  verificarToken , bodyParser.json(), (req , res)=> {
                 else{
                     res.json({
                         status: true ,
-                        mensaje: "se cargo correctamente los datos" 
+                        mensaje: "El producto "+nombre_producto +" se agrego correctamente" 
                              } )
                     
                 } })

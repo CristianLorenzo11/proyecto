@@ -58,3 +58,28 @@ input {
     width: 90%; /* Hacer que el formulario tome el 90% del ancho en móviles */
   }
 }
+.h6 {
+  background-color: none;
+}
+
+/* Estilos CSS personalizados */
+.facebook-list {
+  list-style: none; /* Elimina los marcadores de lista */
+  padding: 0; /* Elimina el relleno por defecto */
+}
+
+.facebook-list li {
+  margin: 0; /* Elimina el margen entre elementos de la lista */
+  padding: 10px 0; /* Añade espacio vertical entre elementos de la lista */
+  font-size: 18px; /* Tamaño de fuente */
+  color: #1877f2; /* Color de texto similar al de Facebook */
+}
+
+.facebook-list li a {
+  text-decoration: none; /* Elimina la decoración de enlace */
+  color: inherit; /* Hereda el color del texto de su elemento padre (li) */
+}
+
+.facebook-list li a:hover {
+  text-decoration: underline; /* Subraya el enlace al pasar el mouse */
+}

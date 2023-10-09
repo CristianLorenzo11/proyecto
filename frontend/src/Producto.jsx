@@ -21,16 +21,16 @@ export function Producto() {
             text: "¡No podrás revertir esto!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: '¡Sí, bórralo!'
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: '¡Sí, Eliminalo!'
         }).then((result) => {
             if (result.isConfirmed) {
                 API.deleteProducto(id_producto);
                 API.getProducto().then(setProducto);
                 Swal.fire(
                     '¡Eliminado!',
-                    'El producto ha sido eliminado.',
+                    'El Producto ha sido eliminado.',
                     'Exito'
                 );
             }
@@ -55,7 +55,7 @@ export function Producto() {
                         <td className="h6">ubicacion</td>
                         <td className="h6">tipo de Producto</td>
                         <td className="h6">Presentacion</td>
-                        <td > <Link className="agregar" to="/agregarproducto">+ Agregar Producto</Link></td>
+                        <td > <Link className="agregar" to="/agregarproducto">+ Agregar</Link></td>
                     </tr>
                     {producto.map((p) => (
                         <tr key={p.id_producto}>

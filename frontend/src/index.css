@@ -122,3 +122,7 @@ button:focus-visible {
     padding: 0.4em 0.8em;
   }
 }
+.h6 {
+  background-color: #f2f2f2;
+}
+

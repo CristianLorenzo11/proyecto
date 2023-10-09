@@ -2,8 +2,6 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
-  overflow-x: auto; /* Añadimos desbordamiento horizontal */
-  display: block; /* Convertimos la tabla en un bloque */
 }
 
 th, td {
@@ -21,7 +19,9 @@ th {
 .h4 {
   background-color: #f2f2f2;
 }
-
+.h6 {
+  background-color: #f2f2f2;
+}
 tr {
   background-color: #f2f2f2;
 }
@@ -42,4 +42,61 @@ td {
       width: 100%; 
       overflow-x: scroll; 
   }
+}
+.container {
+  max-width: 100%;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+  th, td {
+      font-size: 14px;
+  }
+  
+  .h6 {
+      font-size: 12px;
+  }
+  
+  .agregar {
+      font-size: 12px;
+  }
+  
+  .editar, button {
+      font-size: 10px;
+  }
+}
+
+/* Estilos para pantallas medianas */
+@media (min-width: 769px) and (max-width: 1024px) {
+  th, td {
+      font-size: 16px;
+  }
+  
+  .h6 {
+      font-size: 14px;
+  }
+  
+  .agregar {
+      font-size: 14px;
+  }
+  
+  .editar, button {
+      font-size: 12px;
+  }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 1025px) {
+  /* Estilos adicionales para pantallas grandes */
 }
