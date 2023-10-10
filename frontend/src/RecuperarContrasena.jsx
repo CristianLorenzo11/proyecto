@@ -86,7 +86,7 @@ export function RecuperarContrasena() {
             </div>
 
             <div>
-                {/* Botón "Volver" con texto azul y sin subrayado */}
+                {}
                 <button
                     onClick={() => window.history.back()}
                     style={{
