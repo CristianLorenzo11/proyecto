@@ -77,8 +77,8 @@ export function Registro() {
                 <div className="form-floating">
                     <select value={securityQuestion} onChange={(e) => setSecurityQuestion(e.target.value)} className="form-control" id="securityQuestionSelect">
                         <option value="">Selecciona una pregunta de seguridad...</option>
-                        <option value="mascota">¿Cuál es el nombre de tu primera mascota?</option>
-                        <option value="escuela">¿Cuál es el nombre de la escuela primaria a la que asististe?</option>
+                        <option value="mascota">¿Cuál es el nombre de tu mascota?</option>
+                        <option value="comida">¿Cuál es tu comida preferida?</option>
                     </select>
                     <label htmlFor="securityQuestionSelect">Pregunta de seguridad</label>
                 </div>
