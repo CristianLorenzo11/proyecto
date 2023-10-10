@@ -1,45 +1,61 @@
 .encabezado {
   display: flex;
-  align-items: center; /* Centra verticalmente el contenido */
-  padding: 10px; /* Espaciado opcional */
-  color: #fff; /* Color del texto */
+  align-items: center;
+  padding: 10px;
+  color: #fff;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999; /* Asegura que el encabezado esté en la parte superior */
+  position: fixed; /* Fija el encabezado en la parte superior de la ventana */
+  top: 0; /* Alinea el encabezado en la parte superior */
 }
 
 .botones {
   display: flex;
-  gap: 10px; /* Espacio entre botones */
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.bot {
-  background-color: blue;
-}
-
-button {
-  background-color: #04bb22; /* Color de fondo del botón */
-  color: #ffffff; /* Color del texto del botón */
-  border: none;
+.botones a {
   padding: 5px 10px;
-  cursor: pointer;
+  margin: 2px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #04bb22;
   border-radius: 5px;
+  transition: background-color 0.3s;
+  cursor: pointer; /* Indica que es un elemento clickeable */
 }
 
-button:hover {
-  background-color: #0056b3; /* Cambio de color al pasar el mouse */
+.botones a:hover {
+  background-color: #0056b3;
 }
 
-/* Media query para pantallas menores a 768px */
+.nombre-usuario {
+  margin-left: 10px;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Agrega espacio a los elementos debajo del encabezado */
+.espacio-bajo-encabezado {
+  margin-top: 60px; /* Ajusta este valor según sea necesario */
+}
+
 @media only screen and (max-width: 768px) {
   .encabezado {
-      flex-direction: column; /* Cambia la dirección a columna */
+    flex-direction: column;
+    align-items: center;
   }
 
   .botones {
-      justify-content: center; /* Centra los botones horizontalmente */
-      gap: 5px; /* Reducir el espacio entre botones */
-      flex-wrap: wrap; /* Permite que los elementos se ajusten al tamaño del contenedor */
+    justify-content: center;
+    gap: 5px;
   }
 
-  button {
-      padding: 4px 8px; /* Reducir el padding de los botones */
+  .botones a {
+    padding: 4px 8px;
   }
 }
+
+

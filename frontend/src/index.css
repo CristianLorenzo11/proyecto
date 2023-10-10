@@ -17,6 +17,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -33,7 +34,8 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-h3{
+
+h3 {
   color: black;
 }
 
@@ -49,9 +51,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #ffce64;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -62,9 +66,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
@@ -72,12 +78,15 @@ button:focus-visible {
 
 .encabezado {
   display: flex;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  width: 100%;  // Asegura que cubra toda la anchura de la pantalla
   align-items: center;
   padding: 10px;
   color: #fff;
+  background-color: #242424;  // Añadido color de fondo para que el contenido no se vea detrás de la barra.
+  z-index: 10;  // Asegura que el encabezado esté por encima de otros contenidos
 }
 
 .botones {
@@ -93,17 +102,6 @@ button:focus-visible {
   background-color: green;
 }
 
-.usuario {
-  color: blue;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #1877F2;
-  color: white;
-  font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 4px;
-}
 
 /* Media queries para la responsividad */
 @media screen and (max-width: 768px) {
@@ -111,6 +109,7 @@ button:focus-visible {
     flex-direction: column;
     gap: 10px;
   }
+
   .encabezado {
     flex-direction: column;
   }
@@ -120,11 +119,13 @@ button:focus-visible {
   h1 {
     font-size: 2em;
   }
+
   button {
     font-size: 0.8em;
     padding: 0.4em 0.8em;
   }
 }
+
 .h6 {
   background-color: #f2f2f2;
 }
