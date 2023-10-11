@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './producto.css';
+
 import reactLogo from './assets/react.svg';
 import * as API from './servicios/servicios';
 import { Link } from "react-router-dom";
@@ -39,25 +39,28 @@ export function Producto() {
 
     return (
         <>
+        
             <Menu/>
             <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
                 <img src={reactLogo} className="logo react" alt="React logo" />
             </a>
-            <h1>Stock de Productos</h1>
-            <table>
-                <tbody>
+            <div className="table-responsive">
+                      <table className="table table-bordered"   >
+                      <thead>
                     <tr>
-                        <td className="h6">Productos</td>
-                        <td className="h6">cantidad</td>
-                        <td className="h6">proveedor</td>
-                        <td className="h6">Marca</td>
-                        <td className="h6">ubicacion</td>
-                        <td className="h6">tipo de Producto</td>
-                        <td className="h6">Presentacion</td>
-                        <td > <Link className="agregar" to="/agregarproducto">+ Agregar</Link></td>
+                        <td class="align-top" >Productos</td>
+                        <td class="align-top" >cantidad</td>
+                        <td class="align-top" >proveedor</td>
+                        <td class="align-top" >Marca</td>
+                        <td class="align-top" >ubicacion</td>
+                        <td class="align-top" >tipo de Producto</td>
+                        <td class="align-top" >Presentacion</td>
+                        <td > <Link className="btn btn-outline-warning" to="/agregarproducto">+ Agregar</Link></td>
                     </tr>
+                    </thead>
+                    <tbody>
                     {producto.map((p) => (
-                        <tr key={p.id_producto}>
+                        <tr className="align-bottom" key={p.id_producto}>
                             <td>{p.nombre}</td>
                             <td>{p.cantidad}</td>
                             <td>{p.proveedor}</td>
@@ -65,12 +68,14 @@ export function Producto() {
                             <td>{p.ubicacion}</td>
                             <td>{p.tipo_de_producto}</td>
                             <td>{p.presentacion}</td>
-                            <td> <Link to={`/editproducto/${p.id_producto}`}> <button className="editar">Editar </button></Link> </td>
-                            <td><button onClick={(e) => eliminar(e, p.id_producto)}>Eliminar</button></td>
+                            <td> <Link to={`/editproducto/${p.id_producto}`}> <button className="btn btn-outline-info">Editar </button></Link> </td>
+                            <td><button className="btn btn-outline-danger" onClick={(e) => eliminar(e, p.id_producto)}>Eliminar</button></td>
                         </tr>
+                        
                     ))}
-                </tbody>
-            </table>
+                    </tbody>
+                            </table>
+            </div>
         </>
     );
 }

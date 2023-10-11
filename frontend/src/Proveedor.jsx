@@ -31,33 +31,35 @@ export function Proveedor(){
 <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-        
-<table>
-
-    
+        <div className="table-responsive">
+                      <table className="table table-bordered"   >
+                      <thead>
     <tr>
        
-        <td className="h4">Nombre del Proveedor</td>
-        <td className="h4">Estado</td>
-<td><Link className="agregar" to="/agregarproveedor">+ Agregar Proveedor</Link></td>
+        <td className="align-top">Nombre del Proveedor</td>
+        <td className="align-top">Estado</td>
+        <td > <Link className="btn btn-outline-warning" to="/agregarproducto">+ Agregar</Link></td>
     </tr>
+    </thead>
+    <tbody>
     {proveedor.map((p)=>(
-    <tr>
+    <tr className="align-bottom">
     <td>{p.nombre_proveedor}</td>
     <td>{p.estado}</td>
-    <td> <Link  to={`/editproveedor/${p.idproveedor}`}> <button className="editar">Editar </button></Link> </td>
+    <td> <Link  to={`/editproveedor/${p.idproveedor}`}> <button className="btn btn-outline-info">Editar </button></Link> </td>
     {
         (p.estado== "A")?
-        <td><button  onClick={(e)=>eliminar(e, p.idproveedor)}>Desactivar</button></td>
+        <td><button className="btn btn-outline-danger"  onClick={(e)=>eliminar(e, p.idproveedor)}>Desactivar</button></td>
         :
-        <td><button className="activar"  onClick={(e)=>alta(e, p.idproveedor)}>Activar</button></td>
+        <td><button className="btn btn-outline-success"  onClick={(e)=>alta(e, p.idproveedor)}>Activar</button></td>
     }
     
     
     </tr>
     ))}
-    
+    </tbody>
 </table>
+</div>
     </>
     )
     

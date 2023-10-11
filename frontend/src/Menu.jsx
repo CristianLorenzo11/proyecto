@@ -22,7 +22,8 @@ export function Menu(){
 
   return (
     <>
-      <div className="encabezado">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      
         <div className="botones">
         
           <Link to="/principal">Inicio</Link>
@@ -35,8 +36,10 @@ export function Menu(){
           <button className="cerrar" onClick={cerrarSesionHandler}>Cerrar Sesión</button>
         </div>
         
-      </div>
+    
+      </nav>
       <div className="usuario-conectado" > <span class="nombre-usuario">Usuario: {usuario.user}</span></div>
+  
     </>
   );
 }

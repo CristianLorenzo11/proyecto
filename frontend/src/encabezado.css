@@ -14,6 +14,7 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  
 }
 
 .botones a {
@@ -24,12 +25,11 @@
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
- 
   cursor: pointer;
   transition: border-color 0.25s;
   text-decoration: none;
   color: #ffffff;
-  background-color: #0db4f7;
+  background-color:#0db4f7;
   transition: background-color 0.3s;
   cursor: pointer; /* Indica que es un elemento clickeable */
 }
@@ -46,16 +46,9 @@
   font-weight: bold;
 }
 
-/* Agrega espacio a los elementos debajo del encabezado */
-.espacio-bajo-encabezado {
-  margin-top: 60px; /* Ajusta este valor según sea necesario */
-}
 
 @media only screen and (max-width: 768px) {
-  .encabezado {
-    flex-direction: column;
-    align-items: center;
-  }
+
 
   .botones {
     justify-content: center;
