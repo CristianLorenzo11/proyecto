@@ -40,7 +40,6 @@ export function Producto() {
     return (
         <>
             <Menu/>
-            <p></p>
             <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
                 <img src={reactLogo} className="logo react" alt="React logo" />
             </a>

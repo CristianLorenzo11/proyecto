@@ -2,6 +2,8 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
+  overflow-x: auto; /* Añadimos desbordamiento horizontal */
+  display: block; /* Convertimos la tabla en un bloque */
 }
 
 th, td {

@@ -7,7 +7,9 @@ export function Principal(){
  
     return(
 <>
+
 <div>
+<Menu/>
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
@@ -18,7 +20,7 @@ export function Principal(){
 <h1> Outlet Zona Deportiva</h1>
 <h3>Deposito</h3>
 
-<Menu/>
+
 </>
     )
 }

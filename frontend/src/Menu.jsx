@@ -24,16 +24,19 @@ export function Menu(){
     <>
       <div className="encabezado">
         <div className="botones">
+        
           <Link to="/principal">Inicio</Link>
           <Link to="/producto">Productos</Link>
           <Link to="/proveedor">Proveedores</Link>
           <Link to="/marca">Marcas</Link>
           <Link to="/presentacion">Presentación</Link>
           <Link to="/tipoproducto">Tipo de Productos</Link>
-          <button onClick={cerrarSesionHandler}>Cerrar Sesión</button>
+         
+          <button className="cerrar" onClick={cerrarSesionHandler}>Cerrar Sesión</button>
         </div>
+        
       </div>
-      <div className="usuario">Usuario: {usuario.user}</div>
+      <div className="usuario-conectado" > <span class="nombre-usuario">Usuario: {usuario.user}</span></div>
     </>
   );
 }

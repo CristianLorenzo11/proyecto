@@ -19,12 +19,10 @@ import { EditPresentacion } from "./EditPresentacion";
 import { Editproducto } from "./EditProducto";
 import { AadProducto } from "./AadProducto";
 import { RecuperarContrasena } from "./RecuperarContrasena";
-import Encabezado from "./Encabezado"; // Importando el encabezado
 
 function App() {
   return (
     <>
-      <Encabezado />
       <div className="espacio-bajo-encabezado">
         {/* Esto da espacio para el encabezado y permite que el contenido principal ocupe el espacio restante */}
         <Routes>

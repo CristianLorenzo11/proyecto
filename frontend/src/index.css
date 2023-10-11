@@ -81,13 +81,50 @@ button:focus-visible {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;  // Asegura que cubra toda la anchura de la pantalla
-  align-items: center;
+  width: 100%;    align-items: center;
   padding: 10px;
-  color: #fff;
-  background-color: #242424;  // Añadido color de fondo para que el contenido no se vea detrás de la barra.
-  z-index: 10;  // Asegura que el encabezado esté por encima de otros contenidos
+  color: #080000;
+  background-color: #ffffff; 
+  z-index: 10; 
 }
+.usuario-conectado {
+  position: relative;
+  display: inline-block;
+}
+
+.nombre-usuario {
+  background-color: #fff; /* Fondo blanco para el nombre de usuario */
+  color: #000; /* Texto negro para el nombre de usuario */
+  padding: 10px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  font-weight: bold; /* Texto en negrita */
+ font-size: 18px;
+  display: inline-block;
+}
+.cerrar{
+  background-color: gray;
+}
+
+.cerrar:hover {
+  
+ 
+  background-color: darkgray; /* Cambia el color de fondo cuando se hace hover */
+  }
+
+
+.usuario-conectado::before {
+  content: "";
+  display: block;
+  width: 10px; /* Tamaño del indicador verde */
+  height: 10px; /* Tamaño del indicador verde */
+  background-color: #0bdd12; /* Verde brillante para el indicador */
+  border-radius: 50%; /* Para hacerlo redondo */
+  position: absolute;
+  top: 50%; /* Alineado verticalmente en el medio */
+  transform: translateY(-50%); /* Alineado verticalmente en el medio */
+  right: -10px; /* Alineado a la derecha del nombre de usuario */
+}
+
 
 .botones {
   display: flex;
