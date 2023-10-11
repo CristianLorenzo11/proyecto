@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Agrega esta importación
-
+//fix
 export function Home() {
   return (
     <>
