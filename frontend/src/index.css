@@ -103,6 +103,7 @@ button:focus-visible {
 }
 .cerrar{
   background-color: gray;
+  transition: background-color 0.3s; /* Agregar una transición suave */
 }
 
 .cerrar:hover {

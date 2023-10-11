@@ -37,6 +37,7 @@
 .botones a:hover {
   background-color: #0a1ed3;
   color: aliceblue;
+  border-color: #ffce64;
 }
 
 .nombre-usuario {
