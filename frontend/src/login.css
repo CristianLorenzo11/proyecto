@@ -49,10 +49,7 @@
   button:hover {
     background-color: #030a66;
   }
-  body  {
-    background-color: rgb(12, 231, 213) ;
-  
-}
+
 .logo {
   animation: girar 4s linear infinite; /* 4s es la duración de la animación y "infinite" la hace girar continuamente */
 }
@@ -66,3 +63,94 @@
   }
 }
 
+
+
+-ul {
+  list-style-type: none;
+}
+
+h1 {
+  color: rgb(1, 0, 10);
+}
+
+.logo {
+  animation: girar 4s linear infinite;
+}
+
+@keyframes girar {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.login-container {
+  background: linear-gradient(90deg, #00bcd4, #03a9f4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+form {
+  background-color: rgba(247, 247, 247, 0.863);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.952);
+  width: 300px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.973);
+}
+
+/* Media queries para la responsividad */
+@media screen and (max-width: 480px) {
+  form {
+    width: 90%; /* Hacer que el formulario tome el 90% del ancho en móviles */
+  }
+}
+
+.h6 {
+  background-color: none;
+}
+
+/* Estilos CSS personalizados */
+.facebook-list {
+  list-style: none; /* Elimina los marcadores de lista */
+  padding: 0; /* Elimina el relleno por defecto */
+}
+
+.facebook-list li {
+  margin: 0; /* Elimina el margen entre elementos de la lista */
+  padding: 10px 0; /* Añade espacio vertical entre elementos de la lista */
+  font-size: 18px; /* Tamaño de fuente */
+  color: #1877f2; /* Color de texto similar al de Facebook */
+}
+
+.facebook-list li a {
+  text-decoration: none; /* Elimina la decoración de enlace */
+  color: inherit; /* Hereda el color del texto de su elemento padre (li) */
+}
+
+.facebook-list li a:hover {
+  text-decoration: underline; /* Subraya el enlace al pasar el mouse */
+}
+.botones{
+background-color: white;
+}

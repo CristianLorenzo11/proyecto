@@ -48,7 +48,7 @@ export function Producto() {
                       <table className="table table-bordered"   >
                       <thead>
                     <tr>
-                        <td class="align-top" >Productos</td>
+                        <td class="align-top"  >Productos</td>
                         <td class="align-top" >cantidad</td>
                         <td class="align-top" >proveedor</td>
                         <td class="align-top" >Marca</td>

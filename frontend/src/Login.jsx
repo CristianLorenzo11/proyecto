@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./login.css";
 import reactLogo from './assets/react.svg';
 import { Link } from "react-router-dom";
 import * as API from './servicios/servicios';
