@@ -18,6 +18,7 @@
 }
 
 .botones a {
+  color: #ffffff;
   margin: 2px;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -29,7 +30,7 @@
   transition: border-color 0.25s;
   text-decoration: none;
   color: #ffffff;
-  background-color:#0db4f7;
+  background-color:aqua;
   transition: background-color 0.3s;
   cursor: pointer; /* Indica que es un elemento clickeable */
 }
