@@ -45,21 +45,25 @@ export function Presentacion(){
                 <img src={reactLogo} className="logo react" alt="React logo" />
             </a>
 
-            <table>
-                <tbody>
+            <div className="table-responsive">
+                      <table className="table table-bordered"   >
+                      <thead>
                     <tr>
-                        <td className="h4">Presentacion de los Productos</td>
-                        <td> <Link className="agregar" to="/agregarpresentacion">+ Agregar Presentacion</Link></td>
+                        <td class="align-top">Presentacion de los Productos</td>
+                        <td> <Link className="btn btn-outline-warning" to="/agregarpresentacion">+ Agregar Presentacion</Link></td>
                     </tr>
+                    </thead>
+                    <tbody>
                     {presentacion.map((p) => (
-                        <tr key={p.id_presentacion}>
+                        <tr className="align-bottom" key={p.id_presentacion}>
                             <td>{p.presentacion_del_producto}</td>
-                            <td> <Link to={`/editpresentacion/${p.id_presentacion}`}> <button className="editar">Editar </button></Link> </td>
-                            <td><button onClick={(e) => eliminar(e, p.id_presentacion)}>eliminar</button></td>
+                            <td> <Link to={`/editpresentacion/${p.id_presentacion}`}> <button className="btn btn-outline-info">Editar </button></Link> </td>
+                            <td><button className="btn btn-outline-danger" onClick={(e) => eliminar(e, p.id_presentacion)}>eliminar</button></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            </div>
         </>
     );
 }

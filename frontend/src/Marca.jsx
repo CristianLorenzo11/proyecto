@@ -44,21 +44,25 @@ export function Marca(){
                 <img src={reactLogo} className="logo react" alt="React logo" />
             </a>
 
-            <table>
-                <tbody>
+            <div className="table-responsive">
+                      <table className="table table-bordered"   >
+                      <thead>
                     <tr>
-                        <td className="h4">Marcas de los Productos</td>
-                        <td> <Link className="agregar" to="/agregarmarca">+ Agregar Marca</Link></td>
+                        <td class="align-top">Marcas de los Productos</td>
+                        <td> <Link className="btn btn-outline-warning" to="/agregarmarca">+ Agregar Marca</Link></td>
                     </tr>
+                    </thead>
+                    <tbody>
                     {marca.map((p) => (
-                        <tr key={p.id_marca}>
+                        <tr className="align-bottom" key={p.id_marca}>
                             <td>{p.nombre_marca}</td>
-                            <td> <Link to={`/editmarca/${p.id_marca}`}> <button className="editar">Editar </button></Link> </td>
-                            <td><button onClick={(e) => eliminar(e, p.id_marca)}>eliminar</button></td>
+                            <td> <Link to={`/editmarca/${p.id_marca}`}> <button className="btn btn-outline-info">Editar </button></Link> </td>
+                            <td><button className="btn btn-outline-danger" onClick={(e) => eliminar(e, p.id_marca)}>eliminar</button></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            </div>
         </>
     );
 }
