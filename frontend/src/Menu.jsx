@@ -42,7 +42,7 @@ export function Menu(){
           </li>
           <li className="nav-item"> <Link className="nav-link active" aria-current="page" to="/marca">Marcas</Link>   </li>
           <li className="nav-item"> <Link className="nav-link active" aria-current="page" to="/presentacion">Presentación</Link> </li>
-          <li className="nav-item"> <Link className="nav-link active" aria-current="page" to="/tipoproducto">Tipo de Productos</Link>    </li>
+          <li className="nav-item"> <Link className="nav-link active" aria-current="page" to="/tipo_producto">Tipo de Productos</Link>    </li>
          </ul>
           <button className="cerrar" onClick={cerrarSesionHandler}>Cerrar Sesión</button>
         </div>

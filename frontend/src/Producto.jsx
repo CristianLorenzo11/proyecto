@@ -48,13 +48,13 @@ export function Producto() {
                       <table className="table table-bordered"   >
                       <thead>
                     <tr>
-                        <td class="align-top"  >Productos</td>
-                        <td class="align-top" >cantidad</td>
-                        <td class="align-top" >proveedor</td>
-                        <td class="align-top" >Marca</td>
-                        <td class="align-top" >ubicacion</td>
-                        <td class="align-top" >tipo de Producto</td>
-                        <td class="align-top" >Presentacion</td>
+                        <td class="align-top h6"  >Productos</td>
+                        <td class="align-top h6" >cantidad</td> 
+                        <td class="align-top h6" >proveedor</td>
+                        <td class="align-top h6" >Marca</td>
+                        <td class="align-top h6" >ubicacion</td>
+                        <td class="align-top h6" >tipo de Producto</td>
+                        <td class="align-top h6" >Presentacion</td>
                         <td > <Link className="btn btn-outline-warning" to="/agregarproducto">+ Agregar</Link></td>
                     </tr>
                     </thead>

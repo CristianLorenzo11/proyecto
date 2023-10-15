@@ -426,3 +426,65 @@ export async function getTipoProductos(){
     const data= await respuesta.json()
     return data
 }
+/// funcion para editar un tipo de producto 
+export async function EditTipoProducto(datos, id_tipo_producto){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'PUT',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/tipo_producto/${id_tipo_producto}`, Options)
+    const data= await respuesta.json()
+    return data
+}
+/// get para tipo de producto   POR ID
+export async function geTTipoProductoID(id_tipo_producto){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/tipo_producto/${id_tipo_producto}`, Options)
+    const data= await respuesta.json()
+     return data[0];
+}
+
+
+
+/// eliminar una tipo de producto 
+export async function deleteTipoProducto(id_tipo_producto){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/tipo_producto/${id_tipo_producto}`, Options)
+    const data= await respuesta.json()
+    return data
+}
+
+//esta es mi funcion para AGREGAR UNA presentacion
+export async function AadTipoProducto(datos){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'POST',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/tipo_producto`, Options)
+    const data= await respuesta.json()
+    return data
+}

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as API from './servicios/servicios'
 import reactLogo from './assets/react.svg'
-import Encabezado from "./Encabezado";
 import { Link } from "react-router-dom";
 import { Menu } from "./Menu";
 

@@ -22,6 +22,7 @@ export function RecuperarContrasena() {
             const result = await API.cambiarContrasena(username, respuesta, newPassword);
             if (result.status) {
                 alert("Contraseña cambiada exitosamente");
+                window.location.href = '/login';
             } else {
                 alert("Error al cambiar contraseña");
             }

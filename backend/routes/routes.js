@@ -482,7 +482,11 @@ router.post("/tipo_producto", verificarToken, bodyParser.json(), (req, res)=>{
             console.log("el error es",error)
         }
         else{
-            res.send("se cargo correctamente los datos del tipo de producto")
+            res.json({
+                status: true,
+                mensaje: "se cargo correctamente los datos del tipo de producto"
+                     })
+            
         } })}
 }
 ) })
@@ -501,7 +505,11 @@ router.put("/tipo_producto/:id_tipo_producto",verificarToken, bodyParser.json(),
             console.log("el error es",error)
         }
         else{
-            res.send("la edicion del registro  " +id_tipo_producto+ " se realizo correctamente ")
+            res.json({
+                status: true,
+                mensaje: "la edicion del registro  " +id_tipo_producto+ " se realizo correctamente"
+                     })
+           
         } })}
     })})
 

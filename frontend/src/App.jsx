@@ -19,6 +19,10 @@ import { EditPresentacion } from "./EditPresentacion";
 import { Editproducto } from "./EditProducto";
 import { AadProducto } from "./AadProducto";
 import { RecuperarContrasena } from "./RecuperarContrasena";
+import { TipoProducto } from "./tipo-producto";
+import { EditTipoProducto } from "./EditTipoProducto";
+import { AadTipoProducto } from "./AadTipoProducto";
+
 
 function App() {
   return (
@@ -43,6 +47,9 @@ function App() {
           <Route path="/editproducto/:id_producto" element={<Editproducto />} />
           <Route path="/agregarproducto" element={<AadProducto />} />
           <Route path="/recuperarContrasena" element={<RecuperarContrasena />} />
+          <Route path="/tipo_producto" element={<TipoProducto/>} />
+          <Route path="/edittipoproducto/:id_tipo_producto" element={<EditTipoProducto />} />
+          <Route path="/agregartipoproducto" element={<AadTipoProducto />} />
         </Routes>
       </div>
     </>
