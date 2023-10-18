@@ -82,9 +82,16 @@ CREATE TABLE `producto` (
   `id_ubicacion` int NOT NULL,
   `cantidad` int NOT NULL,
   PRIMARY KEY (`id_producto`),
-  KEY `presentacion_producto_idx` (`id_presentacion`),
   KEY `ubicacion_producto_idx` (`id_ubicacion`),
-  CONSTRAINT `producto-presentacion` FOREIGN KEY (`id_presentacion`) REFERENCES `presentacion` (`id_presentacion`)
+  KEY `producto-marca_idx` (`id_marca`),
+  KEY `producto-presentacion_idx` (`id_presentacion`),
+  KEY `producto-proveedor_idx` (`id_proveedor`),
+  KEY `producto-tipoproducto_idx` (`id_tipo_producto`),
+  CONSTRAINT `producto-marca` FOREIGN KEY (`id_marca`) REFERENCES `marca` (`id_marca`),
+  CONSTRAINT `producto-presentacion` FOREIGN KEY (`id_presentacion`) REFERENCES `presentacion` (`id_presentacion`),
+  CONSTRAINT `producto-proveedor` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`idproveedor`),
+  CONSTRAINT `producto-tipoproducto` FOREIGN KEY (`id_tipo_producto`) REFERENCES `tipo_producto` (`id_tipo_producto`),
+  CONSTRAINT `producto-ubicacion` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicacion` (`id_ubicacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -216,4 +223,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-18 15:06:24
+-- Dump completed on 2023-10-18 15:11:12
