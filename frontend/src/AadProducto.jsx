@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import * as API from './servicios/servicios';
 import reactLogo from './assets/react.svg';
 import { Link } from "react-router-dom";
-import { Menu } from "./Menu";
 
 export function AadProducto() {
     const [nombre_producto, setNombre] = useState('');
@@ -54,7 +53,6 @@ export function AadProducto() {
 
     return (
         <>
-            <Menu />
             <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
                 <img src={reactLogo} className="logo react" alt="React logo" />
             </a>
