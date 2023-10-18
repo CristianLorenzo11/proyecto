@@ -27,10 +27,17 @@ export function AadProducto() {
     }, []);
 
     const proveedoresActivos = proveedores.filter((p) => p.estado === 'A');
-    const tipoProductosActivos = tipo_productos.filter((tp) => tp.estado === 'A');
+   
 
     const agregarProducto = async (event) => {
         event.preventDefault();
+        
+        // Validar si se han completado todos los campos obligatorios
+        if (!nombre_producto || !cantidad || !id_marca || !id_presentacion || !id_proveedor || !id_tipo_producto || !id_ubicacion) {
+            alert("Todos los campos son obligatorios. Por favor, complete todos los campos.");
+            return;
+        }
+
         const respuesta = await API.AadProducto({
             nombre_producto,
             id_marca,
@@ -138,7 +145,7 @@ export function AadProducto() {
                             value={id_tipo_producto}
                         >
                             <option value="">Selecciona un tipo de producto</option>
-                            {tipoProductosActivos.map((tp) => (
+                            {tipo_productos.map((tp) => (
                                 <option key={tp.id_tipo_producto} value={tp.id_tipo_producto}>
                                     {tp.tipo_de_producto}
                                 </option>
