@@ -48,7 +48,7 @@ export function Marca(){
                       <table className="table table-bordered"   >
                       <thead>
                     <tr>
-                        <td class="align-top">Marcas de los Productos</td>
+                        <td class="align-top h6">Marcas de los Productos</td>
                         <td> <Link className="btn btn-outline-warning" to="/agregarmarca">+ Agregar Marca</Link></td>
                     </tr>
                     </thead>

@@ -7,6 +7,7 @@ import { Menu } from "./Menu";
 
 export function TipoProducto(){
     const [tipo_producto, setTipoProducto] = useState([]);
+    const [mensaje, setMensaje] = useState('');
 
     useEffect(() => {
         API.getTipoProductos().then(setTipoProducto);
@@ -26,7 +27,7 @@ export function TipoProducto(){
             confirmButtonText: '¡Sí, bórralo!'
         }).then((result) => {
             if (result.isConfirmed) {
-                API.deleteTipoProducto(id_tipo_producto);
+               const respuesta= API.deleteTipoProducto(id_tipo_producto);
                 API.getTipoProductos().then(setTipoProducto);
                 Swal.fire(
                     '¡Eliminado!',
@@ -50,7 +51,7 @@ export function TipoProducto(){
                       <table className="table table-bordered"   >
                       <thead>
                     <tr>
-                        <td class="align-top">tipos de  Productos</td>
+                        <td class="align-top h6">Tipos de  Productos</td>
                         <td> <Link className="btn btn-outline-warning" to="/agregartipoproducto">+ Agregar  </Link></td>
                     </tr>
                     </thead>

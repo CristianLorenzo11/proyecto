@@ -12,6 +12,11 @@ th, td {
   border: 1px solid #ccc;
   border-collapse: collapse;
 }
+.low-stock {
+  color: red; /* Cambiar el color de texto a rojo */
+  /* También puedes agregar estilos adicionales según tus preferencias */
+}
+
 
 th {
   background-color: #f2f2f2;

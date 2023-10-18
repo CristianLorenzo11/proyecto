@@ -1,4 +1,10 @@
-
+.low-stock {
+  color: red; /* Cambiar el color de texto a rojo */
+  
+}
+.active{
+  background-color: blue;
+}
 
 a {
   font-weight: 500;

@@ -49,7 +49,7 @@ export function Presentacion(){
                       <table className="table table-bordered"   >
                       <thead>
                     <tr>
-                        <td class="align-top">Presentacion de los Productos</td>
+                        <td class="align-top h6">Presentacion de los Productos</td>
                         <td> <Link className="btn btn-outline-warning" to="/agregarpresentacion">+ Agregar Presentacion</Link></td>
                     </tr>
                     </thead>

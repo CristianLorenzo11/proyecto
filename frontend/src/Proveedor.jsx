@@ -35,8 +35,8 @@ export function Proveedor(){
                       <thead>
     <tr>
        
-        <td className="align-top">Nombre del Proveedor</td>
-        <td className="align-top">Estado</td>
+        <td className="align-top h6">Nombre del Proveedor</td>
+        <td className="align-top h6">Estado</td>
         <td > <Link className="btn btn-outline-warning" to="/agregarproveedor">+ Agregar</Link></td>
     </tr>
     </thead>
