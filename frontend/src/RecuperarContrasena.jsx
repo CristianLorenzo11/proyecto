@@ -8,14 +8,7 @@ export function RecuperarContrasena() {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const handleRecuperar = async () => {
-        const data = await API.getPregunta(username);
-        if (data) {
-            setPregunta(data.pregunta);
-        } else {
-            alert("Usuario no encontrado");
-        }
-    };
+  
 
     const handleChangePassword = async () => {
         if (newPassword === confirmPassword) {
@@ -44,9 +37,7 @@ export function RecuperarContrasena() {
                 />
             </div>
 
-            <div>
-                <p>INGRESE LA RESPUESTA DE SU PREGUNTA SECRETA</p>
-            </div>
+            
 
             {pregunta && (
                 <div>
@@ -56,7 +47,7 @@ export function RecuperarContrasena() {
             )}
 
             <div>
-                <label>Respuesta:</label>
+                <label>Respuesta secreta:</label>
                 <input
                     type="text"
                     value={respuesta}
