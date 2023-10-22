@@ -28,13 +28,18 @@ export function AadProducto() {
 
     const proveedoresActivos = proveedores.filter((p) => p.estado === 'A');
    
-
     const agregarProducto = async (event) => {
         event.preventDefault();
         
         // Validar si se han completado todos los campos obligatorios
         if (!nombre_producto || !cantidad || !id_marca || !id_presentacion || !id_proveedor || !id_tipo_producto || !id_ubicacion) {
             alert("Todos los campos son obligatorios. Por favor, complete todos los campos.");
+            return;
+        }
+
+        // Validar si la cantidad ingresada es un número
+        if (isNaN(cantidad)) {
+            alert("La cantidad debe ser un número.");
             return;
         }
 
@@ -47,14 +52,15 @@ export function AadProducto() {
             id_ubicacion,
             cantidad
         });
+
         if (respuesta.status) {
-            setMensaje(respuesta.mensaje)
+            setMensaje(respuesta.mensaje);
             setTimeout(() => {
-                setMensaje('')
-                window.location.href = '/producto'
-            }, 3000)
+                setMensaje('');
+                window.location.href = '/producto';
+            }, 3000);
         } else {
-            alert(respuesta.mensaje)
+            alert(respuesta.mensaje);
         }
     }
 
