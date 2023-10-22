@@ -9,6 +9,25 @@ export function AadTipoProducto() {
 
     const guardartipodeproducto = async (event) => {
         event.preventDefault();
+        if (!tipo_de_producto ) {
+          alert("Todos los campos son obligatorios. Por favor, complete todos los campos.");
+          return;
+        }
+
+        const respuesta = await API.AadTipoProducto({tipo_de_producto})
+        console.log("la respuesta es ", respuesta);
+        if(respuesta.status){
+            setMensaje(respuesta.mensaje)
+            setTimeout(()=>{
+                setMensaje('')
+                window.location.href='/tipo_producto'
+                }, 3000)
+        }
+          else{
+            alert(respuesta.mensaje)
+          }
+      return;
+      }
 
         // Validar si se ha completado el campo obligatorio
         if (!tipo_de_producto) {

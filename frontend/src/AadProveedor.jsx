@@ -10,6 +10,29 @@ export function AadProveedor() {
     const guardarproveedor = async (event) => {
         event.preventDefault();
 
+ // Validar si se han completado todos los campos obligatorios
+ if (!nombre_proveedor ) {
+  alert("Todos los campos son obligatorios. Por favor, complete todos los campos.");
+  return;
+}
+
+
+
+        const respuesta = await API.AadProveedor({nombre_proveedor})
+        console.log("la respuesta es ", respuesta);
+        if(respuesta.status){
+            setMensaje(respuesta.mensaje)
+            setTimeout(()=>{
+                setMensaje('')
+                window.location.href='/proveedor'
+                }, 3000)
+        }
+          else{
+            alert(respuesta.mensaje)
+          }
+      return;
+      }
+
         // Validar si se ha completado el campo obligatorio
         if (!nombre_proveedor) {
             alert("Por favor, complete el campo obligatorio.");

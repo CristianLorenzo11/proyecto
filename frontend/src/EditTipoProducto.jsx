@@ -21,6 +21,12 @@ export function EditTipoProducto() {
 
     const editartipoproducto = async (event) => {
         event.preventDefault();
+        if (!tipo_de_producto ) {
+            alert("Todos los campos son obligatorios. Por favor, complete todos los campos.");
+            return;
+          }
+  
+
 
         Swal.fire({
             title: '¿Deseas guardar los cambios?',

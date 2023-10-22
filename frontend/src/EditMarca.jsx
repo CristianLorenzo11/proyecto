@@ -21,6 +21,11 @@ export function Editmarca() {
 
     const editarmarca = async (event) => {
         event.preventDefault();
+        if (!nombre_marca ) {
+            alert("Todos los campos son obligatorios. Por favor, complete todos los campos.");
+            return;
+          }
+  
 
         Swal.fire({
             title: '¿Deseas guardar los cambios?',

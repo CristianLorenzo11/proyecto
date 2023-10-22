@@ -4,16 +4,17 @@ import reactLogo from './assets/react.svg'
 import * as API from './servicios/servicios'
 
 export function AadPresentacion(){
-    const [presentacion_del_producto, setPresentacion] = useState('')
-    const [mensaje, setMensaje] = useState('')
+    const[presentacion_del_producto, setPresentacion]= useState('')
+    const[mensaje, setMensaje]= useState ('')
+    const guardarpresentacion = async(event)=>{
+        event.preventDefault(); // Validar si se han completado todos los campos obligatorios
+        if (!presentacion_del_producto ) {
+         alert("Todos los campos son obligatorios. Por favor, complete todos los campos.");
+         return;
+       }
 
-    const guardarpresentacion = async(event) => {
-        event.preventDefault();
 
-        if (!presentacion_del_producto) {
-            setMensaje('Por favor, complete todos los campos.')
-            return;
-        }
+
 
         const respuesta = await API.AadPresentacion({presentacion_del_producto})
         console.log("la respuesta es ", respuesta);
