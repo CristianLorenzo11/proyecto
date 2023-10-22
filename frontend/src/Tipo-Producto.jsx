@@ -48,7 +48,7 @@ export function TipoProducto(){
             </a>
 
             <div className="table-responsive">
-                      <table className="table table-bordered"   >
+                      <table className="table table-striped-columns"  >
                       <thead>
                     <tr>
                         <td class="align-top h6">Tipos de  Productos</td>
@@ -59,7 +59,7 @@ export function TipoProducto(){
                     {tipo_producto.map((p) => (
                         <tr className="align-bottom" key={p.id_tipo_producto}>
                             <td>{p.tipo_de_producto}</td>
-                            <td> <Link to={`/edittipoproducto/${p.id_tipo_producto}`}> <button className="btn btn-outline-info">Editar </button></Link> </td>
+                            <td> <Link to={`/edittipoproducto/${p.id_tipo_producto}`}> <button className="btn btn-outline-primary">Editar </button></Link> </td>
                             <td><button className="btn btn-outline-danger" onClick={(e) => eliminar(e, p.id_tipo_producto)}>eliminar</button></td>
                         </tr>
                     ))}

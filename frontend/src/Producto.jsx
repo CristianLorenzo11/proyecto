@@ -43,7 +43,7 @@ export function Producto() {
                 <img src={reactLogo} className="logo react" alt="React logo" />
             </a>
             <div className="table-responsive">
-                <table className="table table-bordered">
+                <table className="table table-striped-columns">
                     <thead>
                         <tr>
                             <td className="align-top h6">Productos</td>
@@ -66,7 +66,7 @@ export function Producto() {
                                 <td>{p.ubicacion}</td>
                                 <td>{p.tipo_de_producto}</td>
                                 <td>{p.presentacion}</td>
-                                <td><Link to={`/editproducto/${p.id_producto}`}><button className="btn btn-outline-info">Editar</button></Link></td>
+                                <td><Link to={`/editproducto/${p.id_producto}`}><button className="btn btn-outline-primary">Editar</button></Link></td>
                                 <td><button className="btn btn-outline-danger" onClick={(e) => eliminar(e, p.id_producto)}>Eliminar</button></td>
                             </tr>
                         ))}

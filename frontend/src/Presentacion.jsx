@@ -46,7 +46,7 @@ export function Presentacion(){
             </a>
 
             <div className="table-responsive">
-                      <table className="table table-bordered"   >
+                      <table className="table table-striped-columns"   >
                       <thead>
                     <tr>
                         <td class="align-top h6">Presentacion de los Productos</td>
@@ -57,7 +57,7 @@ export function Presentacion(){
                     {presentacion.map((p) => (
                         <tr className="align-bottom" key={p.id_presentacion}>
                             <td>{p.presentacion_del_producto}</td>
-                            <td> <Link to={`/editpresentacion/${p.id_presentacion}`}> <button className="btn btn-outline-info">Editar </button></Link> </td>
+                            <td> <Link to={`/editpresentacion/${p.id_presentacion}`}> <button className="btn btn-outline-primary">Editar </button></Link> </td>
                             <td><button className="btn btn-outline-danger" onClick={(e) => eliminar(e, p.id_presentacion)}>eliminar</button></td>
                         </tr>
                     ))}

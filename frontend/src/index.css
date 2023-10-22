@@ -23,6 +23,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+body {
+  background: linear-gradient(to bottom, #0000ff, #ffffff);
+}
+
 
 h1 {
   font-size: 3.2em;
@@ -78,7 +82,7 @@ button:focus-visible {
 }
 
 .nombre-usuario {
-  background-color: #fff; /* Fondo blanco para el nombre de usuario */
+  background: transparent;
   color: #000; /* Texto negro para el nombre de usuario */
   padding: 10px; /* Espaciado interno */
   border-radius: 5px; /* Bordes redondeados */
@@ -115,6 +119,7 @@ button:focus-visible {
 .botones {
   display: flex;
   gap: 20px;
+  background-color: transparent;
 }
 
 .editar {

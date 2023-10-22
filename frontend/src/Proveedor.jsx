@@ -31,7 +31,7 @@ export function Proveedor(){
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
         <div className="table-responsive">
-                      <table className="table table-bordered"   >
+                      <table className="table table-striped-columns"  >
                       <thead>
     <tr>
        
@@ -45,7 +45,7 @@ export function Proveedor(){
     <tr className="align-bottom">
     <td>{p.nombre_proveedor}</td>
     <td>{p.estado}</td>
-    <td> <Link  to={`/editproveedor/${p.idproveedor}`}> <button className="btn btn-outline-info">Editar </button></Link> </td>
+    <td> <Link  to={`/editproveedor/${p.idproveedor}`}> <button className="btn btn-outline-primary">Editar </button></Link> </td>
     {
         (p.estado== "A")?
         <td><button className="btn btn-outline-danger"  onClick={(e)=>eliminar(e, p.idproveedor)}>Desactivar</button></td>

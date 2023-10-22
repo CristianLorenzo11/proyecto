@@ -45,7 +45,7 @@ export function Marca(){
             </a>
 
             <div className="table-responsive">
-                      <table className="table table-bordered"   >
+                      <table className="table table-striped-columns"  >
                       <thead>
                     <tr>
                         <td class="align-top h6">Marcas de los Productos</td>
@@ -56,7 +56,7 @@ export function Marca(){
                     {marca.map((p) => (
                         <tr className="align-bottom" key={p.id_marca}>
                             <td>{p.nombre_marca}</td>
-                            <td> <Link to={`/editmarca/${p.id_marca}`}> <button className="btn btn-outline-info">Editar </button></Link> </td>
+                            <td> <Link to={`/editmarca/${p.id_marca}`}> <button className="btn btn-outline-primary">Editar </button></Link> </td>
                             <td><button className="btn btn-outline-danger" onClick={(e) => eliminar(e, p.id_marca)}>eliminar</button></td>
                         </tr>
                     ))}
