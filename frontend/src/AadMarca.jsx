@@ -9,14 +9,6 @@ export function AadMarca(){
 
     const guardarmarca = async(event) => {
         event.preventDefault();
-        if (!nombre_marca ) {
-          alert("Todos los campos son obligatorios. Por favor, complete todos los campos.");
-          return;
-        }
-
-
-
-
         const respuesta = await API.AadMarca({nombre_marca})
         console.log("la respuesta es ", respuesta);
 

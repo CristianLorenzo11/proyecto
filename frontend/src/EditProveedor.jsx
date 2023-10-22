@@ -22,12 +22,6 @@ export function Editproveedor() {
     const editarproveedor = async (event) => {
         event.preventDefault();
 
-         // Validar si se han completado todos los campos obligatorios
- if (!nombre_proveedor ) {
-    alert("Todos los campos son obligatorios. Por favor, complete todos los campos.");
-    return;
-  }
-
         Swal.fire({
             title: '¿Deseas guardar los cambios?',
             showDenyButton: true,
