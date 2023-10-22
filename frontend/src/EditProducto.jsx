@@ -42,6 +42,12 @@ export function Editproducto(){
 
     const editarProducto = async (event) => {
         event.preventDefault();
+          // Validar si se han completado todos los campos obligatorios
+  if (!nombre_producto || !cantidad || !id_marca || !id_presentacion || !id_proveedor || !id_tipo_producto || !id_ubicacion) {
+    alert("Todos los campos son obligatorios. Por favor, complete todos los campos.");
+    return;
+}
+
 
         Swal.fire({
             title: '¿Deseas guardar los cambios?',

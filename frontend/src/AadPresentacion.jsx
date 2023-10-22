@@ -8,6 +8,16 @@ export function AadPresentacion(){
     const[mensaje, setMensaje]= useState ('')
     const guardarpresentacion = async(event)=>{
         event.preventDefault();
+     // Validar si se han completado todos los campos obligatorios
+        if (!presentacion_del_producto ) {
+         alert("Todos los campos son obligatorios. Por favor, complete todos los campos.");
+         return;
+       }
+
+
+
+
+
         const respuesta = await API.AadPresentacion({presentacion_del_producto})
         console.log("la respuesta es ", respuesta);
 

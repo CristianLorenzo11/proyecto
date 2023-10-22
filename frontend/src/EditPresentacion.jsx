@@ -21,6 +21,11 @@ export function EditPresentacion() {
 
     const editarpresentacion = async (event) => {
         event.preventDefault();
+        if (!presentacion_del_producto ) {
+            alert("Todos los campos son obligatorios. Por favor, complete todos los campos.");
+            return;
+          }
+
 
         Swal.fire({
             title: '¿Deseas guardar los cambios?',
