@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import "./producto.css"
 import reactLogo from './assets/react.svg';
 import * as API from './servicios/servicios';
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { Menu } from "./Menu";
+
 
 export function Producto() {
     const [producto, setProducto] = useState([]);
@@ -43,7 +45,7 @@ export function Producto() {
                 <img src={reactLogo} className="logo react" alt="React logo" />
             </a>
             <div className="table-responsive">
-                <table className="table table-striped-columns">
+                <table className="table table">
                     <thead>
                         <tr>
                             <td className="align-top h6">Productos</td>
@@ -60,7 +62,7 @@ export function Producto() {
                         {producto.map((p) => (
                             <tr className="align-bottom" key={p.id_producto}>
                                 <td>{p.nombre}</td>
-                                <td className={p.cantidad < 10 ? 'low-stock' : ''}>{p.cantidad}</td>
+                                <td className={`cantidad ${p.cantidad < 10 ? 'low-stock' : ''}`}>{p.cantidad}</td>
                                 <td>{p.proveedor}</td>
                                 <td>{p.marca}</td>
                                 <td>{p.ubicacion}</td>

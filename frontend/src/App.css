@@ -57,6 +57,9 @@
   border-color: #ffce64;
   color: black;
 }
+.low-stock{
+  color: red;
+}
 
 .agregar:focus,
 .agregar:focus-visible {
