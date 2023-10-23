@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `productos_deportivos` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `productos_deportivos`;
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
 -- Host: localhost    Database: productos_deportivos
@@ -28,7 +26,7 @@ CREATE TABLE `marca` (
   `id_marca` int NOT NULL AUTO_INCREMENT,
   `nombre_marca` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_marca`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,7 +50,7 @@ CREATE TABLE `presentacion` (
   `id_presentacion` int NOT NULL AUTO_INCREMENT,
   `presentacion_del_producto` varchar(45) NOT NULL,
   PRIMARY KEY (`id_presentacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,15 +82,15 @@ CREATE TABLE `producto` (
   PRIMARY KEY (`id_producto`),
   KEY `ubicacion_producto_idx` (`id_ubicacion`),
   KEY `producto-marca_idx` (`id_marca`),
-  KEY `producto-presentacion_idx` (`id_presentacion`),
   KEY `producto-proveedor_idx` (`id_proveedor`),
   KEY `producto-tipoproducto_idx` (`id_tipo_producto`),
+  KEY `Producto-presentacion_idx` (`id_presentacion`),
   CONSTRAINT `producto-marca` FOREIGN KEY (`id_marca`) REFERENCES `marca` (`id_marca`),
-  CONSTRAINT `producto-presentacion` FOREIGN KEY (`id_presentacion`) REFERENCES `presentacion` (`id_presentacion`),
+  CONSTRAINT `Producto-presentacion` FOREIGN KEY (`id_presentacion`) REFERENCES `presentacion` (`id_presentacion`),
   CONSTRAINT `producto-proveedor` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`idproveedor`),
   CONSTRAINT `producto-tipoproducto` FOREIGN KEY (`id_tipo_producto`) REFERENCES `tipo_producto` (`id_tipo_producto`),
   CONSTRAINT `producto-ubicacion` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicacion` (`id_ubicacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,6 +99,7 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
+INSERT INTO `producto` VALUES (1,'Remeras',11,2,1,1,1,12);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,14 +206,6 @@ LOCK TABLES `usuario` WRITE;
 INSERT INTO `usuario` VALUES (1,'cristian','lorenzo',38138712,'cris','$2b$10$KemXtKZ93lQGyBybBseuzeohSG.dPWKd0xMyO6onMBiekTmhT/pbG','cristianelprof@gmail.com','mascota','neron'),(2,'leo','ferreyra',12345678,'leo','$2b$10$lMMVbAHPHLNS1/jsFD6LcuocAO8rFKmZ325H5vYHTZxTVKgw9kROO','leo@gmail.com','mascota','pepe'),(3,'cristian','lorenzo',38138712,'cristian11','$2b$10$1ApypSUyXApvejxiMMeaW.eZEq2yHAFfEZqAr5Eltj3eVsP26rDau','cris@gmail.com','mascota','neron');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'productos_deportivos'
---
-
---
--- Dumping routines for database 'productos_deportivos'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -225,4 +216,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-18 15:26:47
+-- Dump completed on 2023-10-23 20:28:22

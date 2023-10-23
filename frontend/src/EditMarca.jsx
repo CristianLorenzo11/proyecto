@@ -29,10 +29,10 @@ export function Editmarca() {
 
         Swal.fire({
             title: '¿Deseas guardar los cambios?',
-            showDenyButton: true,
+        
             showCancelButton: true,
             confirmButtonText: 'Guardar',
-            denyButtonText: 'No guardar',
+        
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const respuesta = await API.Editmarca({ nombre_marca }, id_marca);

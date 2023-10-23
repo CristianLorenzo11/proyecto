@@ -14,8 +14,14 @@ export function Marca(){
 
     const eliminar = (e, id_marca) => {
         e.preventDefault();
-
-        // **CAMBIO**: Confirmación SweetAlert2
+        if (id_marca === 11 || id_marca===12 || id_marca===15 || id_marca===14) {
+            Swal.fire({
+                icon: 'error',
+                title: 'No permitido',
+                text: 'No puedes eliminar la Marca Adidas, Penalty, nike y Topper',
+            });
+        } else {
+    
         Swal.fire({
             title: '¿Estás seguro?',
             text: "¡No podrás revertir esto!",
@@ -35,7 +41,7 @@ export function Marca(){
                 );
             }
         });
-    };
+    };}
 
     return (
         <>
@@ -57,7 +63,7 @@ export function Marca(){
                         <tr className="align-bottom" key={p.id_marca}>
                             <td>{p.nombre_marca}</td>
                             <td> <Link to={`/editmarca/${p.id_marca}`}> <button className="btn btn-outline-primary">Editar </button></Link> </td>
-                            <td><button className="btn btn-outline-danger" onClick={(e) => eliminar(e, p.id_marca)}>eliminar</button></td>
+                            <td><button className="btn btn-outline-danger" onClick={(e) => eliminar(e, p.id_marca)}>Eliminar</button></td>
                         </tr>
                     ))}
                 </tbody>

@@ -16,7 +16,15 @@ export function Presentacion(){
     const eliminar = (e, id_presentacion) => {
         e.preventDefault();
 
-        // **CAMBIO**: Confirmación SweetAlert2
+           // Verificar si el nombre de la presentación es "Unidad" o "Par"
+           if (id_presentacion === 1 || id_presentacion===2) {
+            Swal.fire({
+                icon: 'error',
+                title: 'No permitido',
+                text: 'No puedes eliminar la presentación llamada "Unidad" o "Par".',
+            });
+        } else {
+    
         Swal.fire({
             title: '¿Estás seguro?',
             text: "¡No podrás revertir esto!",
@@ -36,7 +44,7 @@ export function Presentacion(){
                 );
             }
         });
-    };
+    };}
 
     return (
         <>
@@ -58,7 +66,7 @@ export function Presentacion(){
                         <tr className="align-bottom" key={p.id_presentacion}>
                             <td>{p.presentacion_del_producto}</td>
                             <td> <Link to={`/editpresentacion/${p.id_presentacion}`}> <button className="btn btn-outline-primary">Editar </button></Link> </td>
-                            <td><button className="btn btn-outline-danger" onClick={(e) => eliminar(e, p.id_presentacion)}>eliminar</button></td>
+                            <td><button className="btn btn-outline-danger" onClick={(e) => eliminar(e, p.id_presentacion)}>Eliminar</button></td>
                         </tr>
                     ))}
                 </tbody>

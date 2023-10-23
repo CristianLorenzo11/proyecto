@@ -30,10 +30,9 @@ export function Editproveedor() {
 
         Swal.fire({
             title: '¿Deseas guardar los cambios?',
-            showDenyButton: true,
+    
             showCancelButton: true,
             confirmButtonText: 'Guardar',
-            denyButtonText: 'No guardar',
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const respuesta = await API.Editproveedor({ nombre_proveedor }, idproveedor);

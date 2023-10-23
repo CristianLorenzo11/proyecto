@@ -16,7 +16,15 @@ export function TipoProducto(){
     const eliminar = (e, id_tipo_producto) => {
         e.preventDefault();
 
-        // **CAMBIO**: Confirmación SweetAlert2
+        if (id_tipo_producto === 1 || id_tipo_producto===2 || id_tipo_producto===3) {
+            Swal.fire({
+                icon: 'error',
+                title: 'No permitido',
+                text: 'No puedes eliminar los Elementos deportivos, Suplementos y Pelotas',
+            });
+        } else {
+    
+
         Swal.fire({
             title: '¿Estás seguro?',
             text: "¡No podrás revertir esto!",
@@ -38,7 +46,7 @@ export function TipoProducto(){
                 
             }
         });
-    };
+    };}
 
     return (
         <>

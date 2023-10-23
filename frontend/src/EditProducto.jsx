@@ -51,10 +51,10 @@ export function Editproducto(){
 
         Swal.fire({
             title: '¿Deseas guardar los cambios?',
-            showDenyButton: true,
+    
             showCancelButton: true,
             confirmButtonText: 'Guardar',
-            denyButtonText: 'No guardar',
+            
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const respuesta = await API.EditProducto({ nombre_producto, id_marca, id_presentacion, id_proveedor, id_tipo_producto, id_ubicacion, cantidad }, id_producto);
