@@ -31,7 +31,7 @@ export function Proveedor(){
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
         <div className="table-responsive">
-                      <table className="table table-striped-columns"  >
+                      <table className="table table"  >
                       <thead>
     <tr>
        
