@@ -63,10 +63,10 @@ export function Login() {
                 </div>
                 <button className="btn btn-primary" type="submit">Ingresar</button>
                 <div className="mt-3">
-                    <Link to="/recuperarContrasena">¿Olvidaste tu contraseña?</Link>
+                    <Link to="/recuperarContrasena">¿Olvidaste tu Contraseña?</Link>
                 </div>
                 <p className="mt-3">
-                    <Link to="/">volver</Link>
+                    <Link to="/">Volver</Link>
                 </p>
             </form>
         </main>

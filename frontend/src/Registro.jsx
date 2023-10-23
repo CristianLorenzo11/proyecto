@@ -17,7 +17,7 @@ export function Registro() {
     const registro = async(event) => {
         event.preventDefault();
   // Validar si se han completado todos los campos obligatorios
-  if (!nombre || !apellido || !dni || !user || !pass || !correo || !id_ubicacion  || securityQuestion || securityAnswer) {
+  if (!nombre || !apellido || !dni || !user || !pass || !correo || !securityQuestion ||!securityAnswer  ) {
     alert("Todos los campos son obligatorios. Por favor, complete todos los campos.");
     return;
 }

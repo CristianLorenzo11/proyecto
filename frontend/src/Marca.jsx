@@ -18,7 +18,7 @@ export function Marca(){
             Swal.fire({
                 icon: 'error',
                 title: 'No permitido',
-                text: 'No puedes eliminar la Marca Adidas, Penalty, nike y Topper',
+                text: 'No puedes eliminar la Marca Adidas, Penalty, Nike y Topper',
             });
         } else {
     
