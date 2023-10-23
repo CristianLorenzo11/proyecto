@@ -74,7 +74,7 @@ export function RecuperarContrasena() {
             </div>
 
             <div>
-                <button onClick={handleChangePassword}>Cambiar Contraseña</button>
+                <button className="btn btn-primary w-100 py-2" onClick={handleChangePassword}>Cambiar Contraseña</button>
             </div>
 
             <div>
