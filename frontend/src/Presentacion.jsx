@@ -46,11 +46,11 @@ export function Presentacion(){
             </a>
 
             <div className="table-responsive">
-                      <table className="table table-striped-columns"   >
+                      <table className="table table"   >
                       <thead>
                     <tr>
                         <td class="align-top h6">Presentacion de los Productos</td>
-                        <td> <Link className="btn btn-outline-warning" to="/agregarpresentacion">+ Agregar Presentacion</Link></td>
+                        <td> <Link className="btn btn-outline-warning" to="/agregarpresentacion">+ Agregar </Link></td>
                     </tr>
                     </thead>
                     <tbody>

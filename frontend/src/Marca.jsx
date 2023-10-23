@@ -45,11 +45,11 @@ export function Marca(){
             </a>
 
             <div className="table-responsive">
-                      <table className="table table-striped-columns"  >
+                      <table className="table table"  >
                       <thead>
                     <tr>
                         <td class="align-top h6">Marcas de los Productos</td>
-                        <td> <Link className="btn btn-outline-warning" to="/agregarmarca">+ Agregar Marca</Link></td>
+                        <td> <Link className="btn btn-outline-warning" to="/agregarmarca">+ Agregar</Link></td>
                     </tr>
                     </thead>
                     <tbody>

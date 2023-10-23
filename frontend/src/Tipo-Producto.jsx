@@ -48,7 +48,7 @@ export function TipoProducto(){
             </a>
 
             <div className="table-responsive">
-                      <table className="table table-striped-columns"  >
+                      <table className="table table"  >
                       <thead>
                     <tr>
                         <td class="align-top h6">Tipos de  Productos</td>
