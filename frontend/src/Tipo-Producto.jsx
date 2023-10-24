@@ -68,7 +68,7 @@ export function TipoProducto(){
                         <tr className="align-bottom" key={p.id_tipo_producto}>
                             <td>{p.tipo_de_producto}</td>
                             <td> <Link to={`/edittipoproducto/${p.id_tipo_producto}`}> <button className="btn btn-outline-primary">Editar </button></Link> </td>
-                            <td><button className="btn btn-outline-danger" onClick={(e) => eliminar(e, p.id_tipo_producto)}>eliminar</button></td>
+                            <td><button className="btn btn-outline-danger" onClick={(e) => eliminar(e, p.id_tipo_producto)}>Eliminar</button></td>
                         </tr>
                     ))}
                 </tbody>
