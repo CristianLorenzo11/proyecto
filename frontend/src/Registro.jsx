@@ -68,7 +68,6 @@ export function Registro() {
     title="El DNI debe contener 8 dígitos numéricos"
     value={dni}
     onChange={(event) => {
-      // Lógica para asegurarse de que solo haya números
       const inputDNI = event.target.value.replace(/\D/g, ''); // Elimina caracteres no numéricos
       if (inputDNI.length <= 8) {
         setDni(inputDNI);
