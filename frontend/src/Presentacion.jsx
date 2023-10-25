@@ -34,7 +34,7 @@ const eliminar = (e, id_presentacion) => {
             Swal.fire({
                 icon: 'error',
                 title: 'No permitido',
-                text: 'No puedes eliminar esta presentación porque está en uso en Productos.',
+                text: 'No puedes eliminar esta Presentación porque está en uso en Productos.',
             });
         } else {
             Swal.fire({

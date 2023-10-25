@@ -30,7 +30,7 @@ export function Marca(){
                 Swal.fire({
                     icon: 'error',
                     title: 'No permitido',
-                    text: 'No puedes eliminar esta marca porque está en uso en Productos.',
+                    text: 'No puedes eliminar esta Marca porque está en uso en Productos.',
                 });
             } else {
                 Swal.fire({
