@@ -31,7 +31,7 @@ export function Proveedor(){
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
         <div className="table-responsive">
-                      <table className="table table"  >
+        <table class="table table-dark">
                       <thead>
     <tr>
        
@@ -40,7 +40,7 @@ export function Proveedor(){
         <td > <Link className="btn btn-outline-warning" to="/agregarproveedor">+ Agregar</Link></td>
     </tr>
     </thead>
-    <tbody>
+    <tbody className="table-group-divider">
     {proveedor.map((p)=>(
     <tr className="align-bottom">
     <td>{p.nombre_proveedor}</td>

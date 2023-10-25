@@ -45,7 +45,7 @@ export function Producto() {
                 <img src={reactLogo} className="logo react" alt="React logo" />
             </a>
             <div className="table-responsive">
-                <table className="table table">
+                <table class="table table-dark">
                     <thead>
                         <tr>
                             <td className="align-top h6">Productos</td>
@@ -58,7 +58,7 @@ export function Producto() {
                             <td><Link className="btn btn-outline-warning" to="/agregarproducto">+ Agregar</Link></td>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table-group-divider">
                         {producto.map((p) => (
                             <tr className="align-bottom" key={p.id_producto}>
                                 <td>{p.nombre}</td>
@@ -78,3 +78,5 @@ export function Producto() {
         </>
     );
 }
+
+

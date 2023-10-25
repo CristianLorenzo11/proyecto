@@ -69,14 +69,14 @@ const eliminar = (e, id_presentacion) => {
             </a>
 
             <div className="table-responsive">
-                      <table className="table table"   >
+                      <table className="table table-dark"   >
                       <thead>
                     <tr>
                         <td class="align-top h6">Presentacion de los Productos</td>
                         <td> <Link className="btn btn-outline-warning" to="/agregarpresentacion">+ Agregar </Link></td>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table-group-divider">
                     {presentacion.map((p) => (
                         <tr className="align-bottom" key={p.id_presentacion}>
                             <td>{p.presentacion_del_producto}</td>

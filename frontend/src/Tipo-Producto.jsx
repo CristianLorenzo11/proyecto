@@ -64,18 +64,18 @@ export function TipoProducto(){
             </a>
 
             <div className="table-responsive">
-                      <table className="table table"  >
+                      <table className="table table-dark"  >
                       <thead>
                     <tr>
                         <td class="align-top h6">Tipos de  Productos</td>
                         <td> <Link className="btn btn-outline-warning" to="/agregartipoproducto">+ Agregar  </Link></td>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table-group-divider">
                     {tipo_producto.map((p) => (
                         <tr className="align-bottom" key={p.id_tipo_producto}>
                             <td>{p.tipo_de_producto}</td>
-                            <td> <Link to={`/edittipoproducto/${p.id_tipo_producto}`}> <button className="btn btn-outline-primary">Editar </button></Link> </td>
+                            <td > <Link to={`/edittipoproducto/${p.id_tipo_producto}`}> <button className="btn btn-outline-primary">Editar </button></Link> </td>
                             <td><button className="btn btn-outline-danger" onClick={(e) => eliminar(e, p.id_tipo_producto)}>Eliminar</button></td>
                         </tr>
                     ))}

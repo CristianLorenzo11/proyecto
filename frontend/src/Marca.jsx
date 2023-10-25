@@ -65,14 +65,14 @@ export function Marca(){
             </a>
 
             <div className="table-responsive">
-                      <table className="table table"  >
+                      <table className="table table-dark"  >
                       <thead>
                     <tr>
                         <td class="align-top h6">Marcas de los Productos</td>
                         <td> <Link className="btn btn-outline-warning" to="/agregarmarca">+ Agregar</Link></td>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table-group-divider">
                     {marca.map((p) => (
                         <tr className="align-bottom" key={p.id_marca}>
                             <td>{p.nombre_marca}</td>
