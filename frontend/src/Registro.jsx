@@ -60,9 +60,26 @@ export function Registro() {
                 </div>
 
                 <div className="form-floating">
-                    <input type="text" value={dni} onChange={(e) => setDni(e.target.value)} className="form-control" id="dniInput" placeholder="12345678" />
-                    <label htmlFor="dniInput">DNI</label>
-                </div>
+  <input
+    type="text"
+    name="dni"
+    maxLength="8" // Establece la longitud máxima a 8 caracteres
+    pattern="[0-9]{8}" // Asegura que sean 8 dígitos numéricos
+    title="El DNI debe contener 8 dígitos numéricos"
+    value={dni}
+    onChange={(event) => {
+      // Lógica para asegurarse de que solo haya números
+      const inputDNI = event.target.value.replace(/\D/g, ''); // Elimina caracteres no numéricos
+      if (inputDNI.length <= 8) {
+        setDni(inputDNI);
+      }
+    }}
+    className="form-control"
+    id="dniInput"
+    placeholder="12345678"
+  />
+  <label htmlFor="dniInput">DNI</label>
+</div>
 
                 <div className="form-floating">
                     <input type="text" value={user} onChange={(e) => setUser(e.target.value)} className="form-control" id="userInput" placeholder="usuario123" />
