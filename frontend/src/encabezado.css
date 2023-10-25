@@ -29,7 +29,7 @@
   cursor: pointer;
   transition: border-color 0.25s;
   text-decoration: none;
-  color: #ffffff;
+  color:black;
   background-color:aqua;
   transition: background-color 0.3s;
   cursor: pointer; /* Indica que es un elemento clickeable */
@@ -61,4 +61,10 @@
   }
 }
 
+/* aca indico las condiciones  para la clase active */
+.navbar-nav .nav-item .nav-link.active {
+  background-color: #0a1ed3;
+  color: aliceblue;
+  border-color: #ffce64;
+}
 
