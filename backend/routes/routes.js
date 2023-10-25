@@ -108,6 +108,20 @@ router.get('/producto',  (req , res)=> {
     }
 )
 ;
+// listar los productos en formato json
+router.get('/productos',  (req , res)=> {
+  
+    mysqlConexion.query("SELECT * FROM producto ",(error,registro)=>{
+        if(error){
+            console.log("el error es",error)
+        }
+        else{
+            res.json(registro)
+        }
+         })
+}
+)
+;
 
 //endpoint para selecionar producto por id
 router.get("/producto/:id_producto",verificarToken , (req , res)=> {

@@ -77,6 +77,18 @@ export async function getProducto(){
     const data= await respuesta.json()
     return data
 }
+
+export async function getProductos(){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/productos`, Options)
+    const data= await respuesta.json()
+    return data
+}
 //////funcion para eliminar un producto 
 /// baja de proveedor 
 export async function deleteProducto(id_producto){

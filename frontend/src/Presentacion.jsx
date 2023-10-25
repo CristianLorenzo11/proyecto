@@ -8,43 +8,58 @@ import { Menu } from "./Menu";
 
 export function Presentacion(){
     const [presentacion, setPresentacion] = useState([]);
+    const [producto, setProducto] = useState([]);
 
     useEffect(() => {
         API.getPresentacion().then(setPresentacion);
+        API.getProductos().then(setProducto);
     }, []);
+console.log(producto)
 
-    const eliminar = (e, id_presentacion) => {
-        e.preventDefault();
+const eliminar = (e, id_presentacion) => {
+    e.preventDefault();
 
-           // Verificar si el nombre de la presentación es "Unidad" o "Par"
-           if (id_presentacion === 1 || id_presentacion===2) {
+    // Verificar si el nombre de la presentación es "Unidad" o "Par"
+    if (id_presentacion === 1 || id_presentacion === 2) {
+        Swal.fire({
+            icon: 'error',
+            title: 'No permitido',
+            text: 'No puedes eliminar la presentación llamada "Unidad" o "Par".',
+        });
+    } else {
+        // Verificar si el id_presentacion está en uso en productos
+        const presentacionEnUso = producto.some(producto => producto.id_presentacion === id_presentacion);
+
+        if (presentacionEnUso) {
             Swal.fire({
                 icon: 'error',
                 title: 'No permitido',
-                text: 'No puedes eliminar la presentación llamada "Unidad" o "Par".',
+                text: 'No puedes eliminar esta presentación porque está en uso en Productos.',
             });
         } else {
-    
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: "¡No podrás revertir esto!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: '¡Sí, bórralo!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                API.deletePresentacion(id_presentacion);
-                API.getPresentacion().then(setPresentacion);
-                Swal.fire(
-                    '¡Eliminado!',
-                    'La presentación ha sido eliminada.',
-                    'success'
-                );
-            }
-        });
-    };}
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: '¡No podrás revertir esto!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: '¡Sí, bórralo!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    API.deletePresentacion(id_presentacion);
+                    API.getPresentacion().then(setPresentacion);
+                    Swal.fire(
+                        '¡Eliminado!',
+                        'La presentación ha sido eliminada.',
+                        'success'
+                    );
+                }
+            });
+        }
+    }
+};
+
 
     return (
         <>

@@ -7,41 +7,55 @@ import { Menu } from "./Menu";
 
 export function Marca(){
     const [marca, setMarca] = useState([]);
+    const [producto, setProducto] = useState([]);
 
     useEffect(() => {
         API.getMarca().then(setMarca);
+        API.getProductos().then(setProducto);
     }, []);
 
     const eliminar = (e, id_marca) => {
         e.preventDefault();
-        if (id_marca === 11 || id_marca===12 || id_marca===15 || id_marca===14) {
+        if ( id_marca === 15 || id_marca === 14) {
             Swal.fire({
                 icon: 'error',
                 title: 'No permitido',
-                text: 'No puedes eliminar la Marca Adidas, Penalty, Nike y Topper',
+                text: 'No puedes eliminar la Marca Adidas y  Nike',
             });
         } else {
+            // Verificar si la marca está en uso en productos
+            const marcaEnUso = producto.some(producto => producto.id_marca === id_marca);
     
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: "¡No podrás revertir esto!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: '¡Sí, bórralo!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                API.deleteMarca(id_marca);
-                API.getMarca().then(setMarca);
-                Swal.fire(
-                    '¡Eliminado!',
-                    'La marca ha sido eliminada.',
-                    'success'
-                );
+            if (marcaEnUso) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'No permitido',
+                    text: 'No puedes eliminar esta marca porque está en uso en Productos.',
+                });
+            } else {
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: '¡No podrás revertir esto!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: '¡Sí, bórralo!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        API.deleteMarca(id_marca);
+                        API.getMarca().then(setMarca);
+                        Swal.fire(
+                            '¡Eliminado!',
+                            'La marca ha sido eliminada.',
+                            'success'
+                        );
+                    }
+                });
             }
-        });
-    };}
+        }
+    };
+    
 
     return (
         <>
